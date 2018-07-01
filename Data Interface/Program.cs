@@ -41,7 +41,7 @@ namespace Data_Interface
             }
             else
             {
-                MessageBox.Show("Have this dir already");
+               // MessageBox.Show("Have this dir already");
             }
 
             FileStream fs;
