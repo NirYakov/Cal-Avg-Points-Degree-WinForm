@@ -32,6 +32,21 @@ namespace Data_Interface
             radioButtons();
         }
 
+        public bool IsHaveNewUser() => newUserRadioButton.Checked == true;
+
+        public string NewUser
+        {
+            get { return newUserTextBox.Text; }
+        }
+
+        public string ComboChosen
+        {
+            get
+            {
+                return usersComboBox.SelectedItem.ToString();
+            }
+        }
+
         private void addToUserCombolist()
         {
             string dataUserPath = "UsersData";
@@ -46,6 +61,12 @@ namespace Data_Interface
                     usersComboBox.Items.Add(fileName);
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

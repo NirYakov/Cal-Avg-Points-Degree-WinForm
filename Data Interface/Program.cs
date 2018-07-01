@@ -18,14 +18,45 @@ namespace Data_Interface
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            ActiveMethod();
+        }
 
-            FileCreate();
-            //testFillDataToTxtAndListView();
+        static public void ActiveMethod()
+        {
+
+            Form1 form1 = new Form1();
+
+            
+            if (form1.ShowDialog() == DialogResult.OK)
+            {
+
+            string nameOfFile;
+
+                if (form1.IsHaveNewUser() == true)
+                {
+                    nameOfFile = form1.NewUser;
+                    FileStream fs =  File.OpenWrite(string.Format(@"UsersData\{0}.txt",nameOfFile));
+                    fs.Close();
+                }
+                else
+                {
+                    nameOfFile = form1.ComboChosen;
+                }
+
+                MessageBox.Show(string.Format(nameOfFile));
+
+                FileCreate();
+                //testFillDataToTxtAndListView();
 
 
-            Application.Run(new Form2());
+                // Application.Run(new Form2());
 
-            // Application.Run(new Form1());
+                Form2 form2 = new Form2(nameOfFile);
+                form2.ShowDialog();
+                form2.SaveNewData();
+
+                // Application.Run(new Form1());
+            }
 
         }
 

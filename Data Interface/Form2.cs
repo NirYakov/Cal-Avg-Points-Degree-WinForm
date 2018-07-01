@@ -13,25 +13,28 @@ namespace Data_Interface
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        public Form2(string i_UserFileName)
         {
             InitializeComponent();
 
-            r_UserFileName = "Nir y";
+            r_UserFileName = i_UserFileName;
 
             loadDataToListView();
+
             
+
         }
 
 
         private void loadDataToListView()
         {
-            string[] testData = File.ReadAllLines(@"UsersData\Nir y.txt");
+            const string endFile = ".txt";
+            string[] testData = File.ReadAllLines(string.Format(@"UsersData\{0}{1}", r_UserFileName, endFile));
             foreach (string item in testData)
             {
                 string[] splitToColsString = item.Split(',');
                 addItemToListView(splitToColsString);
-            }
+            }            
         }
 
         private void addItemToListView(string[] i_DataToList)
@@ -68,29 +71,25 @@ namespace Data_Interface
 
         private readonly string r_UserFileName;
 
-        ~Form2()
+        public void SaveNewData()
         {
-            if (saveChangesCheckBox.Checked == true)
-            {
+
+            if (saveChangesCheckBox.CheckState == CheckState.Checked)
+            {                
                 const string endFile = ".txt";
-                FileStream fs = File.OpenWrite(string.Format( @".\UserData\{0}{1}",r_UserFileName, endFile));
 
                 string[] allDataLines = new string[dataListView.Items.Count];
                 int i = 0;
                 foreach (ListViewItem item in dataListView.Items)
                 {
-                    /*string dataLine*/ allDataLines[i++] = string.Format("{0},{1},{2,{3},{4}"
-                        ,item.SubItems[0], item.SubItems[1], item.SubItems[2], item.SubItems[3], item.SubItems[4]);
-
-                    MessageBox.Show("Here");
+                    allDataLines[i++] = string.Format("{0},{1},{2},{3},{4}"
+                   , item.SubItems[0].Text, item.SubItems[1].Text, item.SubItems[2].Text
+                   , item.SubItems[3].Text, item.SubItems[4].Text);
 
                 }
 
-                File.WriteAllLines(string.Format(@"UserData\{0}{1}", r_UserFileName, endFile) , allDataLines);
-
+                File.WriteAllLines(string.Format(@"UsersData\{0}{1}", r_UserFileName, endFile) , allDataLines);
                 
-
-                fs.Close();
             }
         }
     }
