@@ -34,6 +34,8 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
+            this.saveChangesCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // dataListView
@@ -51,7 +53,7 @@
             this.dataListView.Location = new System.Drawing.Point(28, 172);
             this.dataListView.MultiSelect = false;
             this.dataListView.Name = "dataListView";
-            this.dataListView.Size = new System.Drawing.Size(721, 513);
+            this.dataListView.Size = new System.Drawing.Size(721, 824);
             this.dataListView.TabIndex = 0;
             this.dataListView.UseCompatibleStateImageBehavior = false;
             this.dataListView.View = System.Windows.Forms.View.Details;
@@ -77,16 +79,39 @@
             // 
             this.columnHeader5.Text = "Semester";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(591, 65);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(134, 57);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Add New";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // saveChangesCheckBox
+            // 
+            this.saveChangesCheckBox.AutoSize = true;
+            this.saveChangesCheckBox.Location = new System.Drawing.Point(28, 124);
+            this.saveChangesCheckBox.Name = "saveChangesCheckBox";
+            this.saveChangesCheckBox.Size = new System.Drawing.Size(181, 29);
+            this.saveChangesCheckBox.TabIndex = 2;
+            this.saveChangesCheckBox.Text = "Save changes";
+            this.saveChangesCheckBox.UseVisualStyleBackColor = true;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 697);
+            this.ClientSize = new System.Drawing.Size(776, 1008);
+            this.Controls.Add(this.saveChangesCheckBox);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataListView);
             this.MinimumSize = new System.Drawing.Size(792, 768);
             this.Name = "Form2";
             this.Text = "Form2";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -98,5 +123,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox saveChangesCheckBox;
     }
 }

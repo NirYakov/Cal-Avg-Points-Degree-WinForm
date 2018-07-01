@@ -20,11 +20,23 @@ namespace Data_Interface
             Application.SetCompatibleTextRenderingDefault(false);
 
             FileCreate();
+            //testFillDataToTxtAndListView();
+
 
             Application.Run(new Form2());
 
             // Application.Run(new Form1());
-            
+
+        }
+
+        static public void testFillDataToTxtAndListView()
+        {
+            string[] nirCurses = { "Prog C,79,5,1,1", "Algo A,83,4,2,2", ".Net C#,93,3,2,2", "Assmbely,91,3,2,1" };
+
+            // FileStream fs = File.OpenWrite(@"UsersData\Nir y.txt");
+
+            File.WriteAllLines(@"UsersData\Nir y.txt", nirCurses);
+
         }
 
 
@@ -41,7 +53,7 @@ namespace Data_Interface
             }
             else
             {
-               // MessageBox.Show("Have this dir already");
+                // MessageBox.Show("Have this dir already");
             }
 
             FileStream fs;
@@ -50,13 +62,13 @@ namespace Data_Interface
             {
                 fs = File.OpenWrite(@"UsersData\Ran z.txt");
                 fs.Close();
-            }            
+            }
 
             if (!File.Exists(@"UsersData\Nir y.txt"))
             {
                 fs = File.OpenWrite(@"UsersData\Nir y.txt");
                 fs.Close();
-            }            
+            }
         }
     }
 }
