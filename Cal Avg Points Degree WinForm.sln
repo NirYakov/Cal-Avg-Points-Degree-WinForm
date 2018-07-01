@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Interface", "Data Interface\Data Interface.csproj", "{8F07F70F-7B5A-4E64-862C-9936FF7E2120}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cal And Utills To Degree Points", "Cal And Utills To Degree Points\Cal And Utills To Degree Points.csproj", "{76712C41-920C-42A6-B1A6-FD02A75B0F21}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F07F70F-7B5A-4E64-862C-9936FF7E2120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F07F70F-7B5A-4E64-862C-9936FF7E2120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F07F70F-7B5A-4E64-862C-9936FF7E2120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F07F70F-7B5A-4E64-862C-9936FF7E2120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76712C41-920C-42A6-B1A6-FD02A75B0F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76712C41-920C-42A6-B1A6-FD02A75B0F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76712C41-920C-42A6-B1A6-FD02A75B0F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76712C41-920C-42A6-B1A6-FD02A75B0F21}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57E1DEDE-6D73-43CF-AE7B-B3085D594EF8}
+	EndGlobalSection
+EndGlobal
