@@ -30,16 +30,30 @@ namespace Data_Interface
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == "" || textBox2.Text == "" || 
-                textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "")
+                textBox3.Text == "" || textBox4.Text == "" )
             {
                 string[] newData = new string[5];
                 newData[(int)eSubItem.CourseName] = textBox1.Text;
                 newData[(int)eSubItem.Mark] = textBox2.Text;
                 newData[(int)eSubItem.Points] = textBox3.Text;
                 newData[(int)eSubItem.Year] = textBox4.Text;
-                newData[(int)eSubItem.Semseter] = textBox5.Text;
+                string semesterStr;
+                if (radioButton1.Checked == true)
+                {
+                    semesterStr = radioButton1.Text;
+                }
+                else if (radioButton2.Checked == true)
+                {
+                    semesterStr = radioButton2.Text;
+                }
+                else
+                {
+                    semesterStr = radioButton3.Text;
+                }
 
-                textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text = string.Empty;
+                newData[(int)eSubItem.Semseter] = semesterStr;
+
+                textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = string.Empty;
 
                 OnAddCurse(newData);
             }

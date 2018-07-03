@@ -89,10 +89,24 @@ namespace Data_Interface
                 int i = 0;
                 foreach (ListViewItem item in dataListView.Items)
                 {
+                    //
+                    string toChange;
+                    if (item.SubItems[(int)eSubItem.Semseter].Text == "1")
+                    {
+                        toChange = "A";
+                    } else if (item.SubItems[(int)eSubItem.Semseter].Text == "2")
+                    {
+                        toChange = "B";
+                    }
+                    else
+                    {
+                        toChange = "C";
+                    }
+                    //
                     allDataLines[i++] = string.Format("{0},{1},{2},{3},{4}"
                    , item.SubItems[(int)eSubItem.CourseName].Text, item.SubItems[(int)eSubItem.Mark].Text
                    , item.SubItems[(int)eSubItem.Points].Text, item.SubItems[(int)eSubItem.Year].Text
-                   , item.SubItems[(int)eSubItem.Semseter].Text);
+                   , toChange/*item.SubItems[(int)eSubItem.Semseter].Text*/);
 
                 }
 
