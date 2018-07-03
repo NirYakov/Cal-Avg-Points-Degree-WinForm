@@ -6,54 +6,46 @@ using System.Threading.Tasks;
 
 namespace Cal_And_Utills_To_Degree_Points
 {
-    public class CalculateAvg
+    public struct CalculateAvg
     {
-        private readonly LinkedList<CursePointsAndMark> r_DataList = new LinkedList<CursePointsAndMark>();
-        private string m_StudentName;
+        private float m_MarkTotal ;
+        private float m_PointsTotal;
 
-        public string StudentName
-        {
-            get { return m_StudentName; }
-        }
-
-        public void AddCourse(string i_CouseName, float i_Mark, float i_Points)
-        {
-            r_DataList.AddLast(new CursePointsAndMark(i_CouseName, i_Mark, i_Points));
-        }
-
-        private bool RemoveCourse(string i_CouseName) // Dont use, not have the remove to this.
-        {
-            bool isHere = false;
-
-            foreach (CursePointsAndMark item in r_DataList)
-            {
-                if (i_CouseName == item.CurseName)
-                {
-                    isHere = true;
-                    break;
-
-                    // r_DataList.Remove();
-                }
-            }
-
-            return isHere;
-        }
-
-        public float Avg
-        {
+        public float AverageTotal {
             get
             {
-                float totalMarks = 0, totalPoints = 0;
-                foreach (CursePointsAndMark item in r_DataList)
+                float answer;
+
+                try
                 {
-                    totalMarks += item.Mark;
-                    totalPoints += item.Points;
+                    answer = m_MarkTotal / m_PointsTotal;
+                }
+                catch (Exception)
+                {
+                    answer = 0;
                 }
 
-                float avgMark = totalMarks / totalPoints;
-
-                return avgMark;
+                return answer; 
             }
+        }
+
+        public void AddMarkAndPoints(float i_Mark , float i_Points)
+        {
+            m_MarkTotal += i_Mark * i_Points;
+            m_PointsTotal += i_Points;
+        }
+
+        public void AddMarkAndPoints(string i_MarkStr, string i_PointsStr)
+        {
+            float mark = float.Parse(i_MarkStr);
+            float points = float.Parse(i_PointsStr);
+            m_MarkTotal += mark * points ;
+            m_PointsTotal += points;
+        }        
+
+        public override string ToString()
+        {
+            return string.Format("{0:0.00}", AverageTotal);
         }
     }
 }

@@ -36,6 +36,8 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.saveChangesCheckBox = new System.Windows.Forms.CheckBox();
+            this.avrgMarkLabel = new System.Windows.Forms.Label();
+            this.markLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // dataListView
@@ -51,7 +53,7 @@
             this.columnHeader5});
             this.dataListView.FullRowSelect = true;
             this.dataListView.GridLines = true;
-            this.dataListView.Location = new System.Drawing.Point(28, 173);
+            this.dataListView.Location = new System.Drawing.Point(28, 172);
             this.dataListView.MultiSelect = false;
             this.dataListView.Name = "dataListView";
             this.dataListView.Size = new System.Drawing.Size(721, 814);
@@ -61,7 +63,7 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Curse Name";
+            this.columnHeader1.Text = "Course Name";
             this.columnHeader1.Width = 120;
             // 
             // columnHeader2
@@ -100,18 +102,41 @@
             this.saveChangesCheckBox.Text = "Save changes";
             this.saveChangesCheckBox.UseVisualStyleBackColor = true;
             // 
-            // Form2
+            // avrgMarkLabel
+            // 
+            this.avrgMarkLabel.AutoSize = true;
+            this.avrgMarkLabel.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avrgMarkLabel.Location = new System.Drawing.Point(21, 51);
+            this.avrgMarkLabel.Name = "avrgMarkLabel";
+            this.avrgMarkLabel.Size = new System.Drawing.Size(250, 38);
+            this.avrgMarkLabel.TabIndex = 3;
+            this.avrgMarkLabel.Text = "Average mark  :";
+            // 
+            // markLabel
+            // 
+            this.markLabel.AutoSize = true;
+            this.markLabel.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.markLabel.Location = new System.Drawing.Point(277, 51);
+            this.markLabel.Name = "markLabel";
+            this.markLabel.Size = new System.Drawing.Size(53, 38);
+            this.markLabel.TabIndex = 4;
+            this.markLabel.Text = "00";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 1008);
+            this.Controls.Add(this.markLabel);
+            this.Controls.Add(this.avrgMarkLabel);
             this.Controls.Add(this.saveChangesCheckBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataListView);
             this.MinimumSize = new System.Drawing.Size(792, 768);
-            this.Name = "Form2";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,5 +152,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox saveChangesCheckBox;
+        private System.Windows.Forms.Label avrgMarkLabel;
+        private System.Windows.Forms.Label markLabel;
     }
 }

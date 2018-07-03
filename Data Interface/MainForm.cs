@@ -8,11 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cal_And_Utills_To_Degree_Points;
 
 namespace Data_Interface
 {
     public partial class MainForm : Form
     {
+        private readonly string r_UserFileName;
+        private readonly AddItemsForm r_Form3 = new AddItemsForm();
+        private CalculateAvg m_CalAvg;
+
 
         public MainForm(string i_UserFileName)
         {
@@ -44,37 +49,34 @@ namespace Data_Interface
 
         private void addItemToListView(string[] i_DataToList)
         {
-            ListViewItem lvi = new ListViewItem(i_DataToList[0]);
-            lvi.SubItems.Add(i_DataToList[1]);
-            lvi.SubItems.Add(i_DataToList[2]);
-            lvi.SubItems.Add(i_DataToList[3]);
-            lvi.SubItems.Add(i_DataToList[4]);
+            ListViewItem lvi = new ListViewItem(i_DataToList[(int)eSubItem.CourseName]);
+            lvi.SubItems.Add(i_DataToList[(int)eSubItem.Mark]);
+            lvi.SubItems.Add(i_DataToList[(int)eSubItem.Points]);
+            lvi.SubItems.Add(i_DataToList[(int)eSubItem.Year]);
+            lvi.SubItems.Add(i_DataToList[(int)eSubItem.Semseter]);
 
             dataListView.Items.Add(lvi);
-        }
 
-        private readonly AddItemsForm r_Form3 = new AddItemsForm();
+            int listViewCount = dataListView.Items.Count;
+
+            if (listViewCount % 2 == 0)
+            {
+                dataListView.Items[listViewCount - 1].BackColor =  Color.LightGray; // Color.Gray ;
+                // dataListView.Items[listViewCount - 1].ForeColor = Color.White;
+            }
+
+            m_CalAvg.AddMarkAndPoints(i_DataToList[(int)eSubItem.Mark], i_DataToList[(int)eSubItem.Points]);
+            markLabel.Text = m_CalAvg.ToString() ;
+        }        
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            r_Form3.ClearNewData();
+        {           
             r_Form3.ShowDialog();
-            
-            //LinkedList<string[]> dataList = r_Form3.NewDataArray;
-            //if (dataList.Count > 0)
-            //{
-            //    foreach (string[] item in dataList)
-            //    {
-            //        addItemToListView(item);
-            //    }
 
-
-            //}
-
+            // markLabel.Text = "21";
+           
             r_Form3.Hide();
-        }
-
-        private readonly string r_UserFileName;
+        }        
 
         public void SaveNewData()
         {
@@ -88,14 +90,37 @@ namespace Data_Interface
                 foreach (ListViewItem item in dataListView.Items)
                 {
                     allDataLines[i++] = string.Format("{0},{1},{2},{3},{4}"
-                   , item.SubItems[0].Text, item.SubItems[1].Text, item.SubItems[2].Text
-                   , item.SubItems[3].Text, item.SubItems[4].Text);
+                   , item.SubItems[(int)eSubItem.CourseName].Text, item.SubItems[(int)eSubItem.Mark].Text
+                   , item.SubItems[(int)eSubItem.Points].Text, item.SubItems[(int)eSubItem.Year].Text
+                   , item.SubItems[(int)eSubItem.Semseter].Text);
 
                 }
 
-                File.WriteAllLines(string.Format(@"UsersData\{0}{1}", r_UserFileName, endFile) , allDataLines);
+                File.WriteAllLines(string.Format(@"UsersData\{0}{1}", r_UserFileName, endFile) , allDataLines);                
                 
             }
         }
-    }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MessageBox.Show("Bye im Closed (MainForm)");
+        }
+    }    
+}
+
+public enum eSmester
+{
+    A = 'A' ,
+    B = 'B' ,
+    C = 'C'
+}
+
+public enum eSubItem
+{
+    CourseName,
+    Mark,
+    Points,
+    Year,
+    Semseter
+
 }

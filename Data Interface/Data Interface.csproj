@@ -96,5 +96,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cal And Utills To Degree Points\Cal And Utills To Degree Points.csproj">
+      <Project>{76712c41-920c-42a6-b1a6-fd02a75b0f21}</Project>
+      <Name>Cal And Utills To Degree Points</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

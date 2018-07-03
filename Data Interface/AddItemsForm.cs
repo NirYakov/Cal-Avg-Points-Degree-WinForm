@@ -11,10 +11,7 @@ using System.Windows.Forms;
 namespace Data_Interface
 {
     public partial class AddItemsForm : Form
-    {
-
-        private readonly LinkedList<string[]> r_NewDataList = new LinkedList<string[]>();
-
+    {       
         public event Action<string[]> AddCurse;
 
         public AddItemsForm()
@@ -28,38 +25,24 @@ namespace Data_Interface
             {
                 AddCurse.Invoke(i_NewAddCurse);
             }
-        }
-
-        public LinkedList<string[]> NewDataArray
-        {
-            get
-            {                
-                return r_NewDataList;
-            }
-        }
-
-        internal void ClearNewData()
-        {
-            r_NewDataList.Clear();
-        }
+        }        
 
         private void button1_Click(object sender, EventArgs e)
-        {            
-            string[] newData = new string[5];
-            newData[0] = textBox1.Text;
-            newData[1] = textBox2.Text;
-            newData[2] = textBox3.Text;
-            newData[3] = textBox4.Text;
-            newData[4] = textBox5.Text;
+        {
+            if (textBox1.Text == "" || textBox2.Text == "" || 
+                textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "")
+            {
+                string[] newData = new string[5];
+                newData[(int)eSubItem.CourseName] = textBox1.Text;
+                newData[(int)eSubItem.Mark] = textBox2.Text;
+                newData[(int)eSubItem.Points] = textBox3.Text;
+                newData[(int)eSubItem.Year] = textBox4.Text;
+                newData[(int)eSubItem.Semseter] = textBox5.Text;
 
-            textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text = string.Empty;
+                textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text = string.Empty;
 
-            OnAddCurse(newData);
-
-           // r_NewDataList.AddLast(newData);
-
+                OnAddCurse(newData);
+            }
         }
-
-
     }
 }
