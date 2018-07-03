@@ -1,6 +1,6 @@
 ﻿namespace Data_Interface
 {
-    partial class Form1
+    partial class OpenningForm
     {
         /// <summary>
         /// Required designer variable.

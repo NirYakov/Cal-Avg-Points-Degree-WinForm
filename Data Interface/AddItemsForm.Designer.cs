@@ -1,6 +1,6 @@
 ﻿namespace Data_Interface
 {
-    partial class Form3
+    partial class AddItemsForm
     {
         /// <summary>
         /// Required designer variable.

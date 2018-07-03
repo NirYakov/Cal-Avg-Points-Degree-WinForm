@@ -23,8 +23,9 @@ namespace Data_Interface
 
         static public void ActiveMethod()
         {
+                FileCreate();
 
-            Form1 form1 = new Form1();
+            OpenningForm form1 = new OpenningForm();
 
             
             if (form1.ShowDialog() == DialogResult.OK)
@@ -45,13 +46,12 @@ namespace Data_Interface
 
                 MessageBox.Show(string.Format(nameOfFile));
 
-                FileCreate();
                 //testFillDataToTxtAndListView();
 
 
                 // Application.Run(new Form2());
 
-                Form2 form2 = new Form2(nameOfFile);
+                MainForm form2 = new MainForm(nameOfFile);
                 form2.ShowDialog();
                 form2.SaveNewData();
 

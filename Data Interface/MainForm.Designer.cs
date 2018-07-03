@@ -1,6 +1,6 @@
 ﻿namespace Data_Interface
 {
-    partial class Form2
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -49,11 +49,12 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.dataListView.FullRowSelect = true;
             this.dataListView.GridLines = true;
-            this.dataListView.Location = new System.Drawing.Point(28, 172);
+            this.dataListView.Location = new System.Drawing.Point(28, 173);
             this.dataListView.MultiSelect = false;
             this.dataListView.Name = "dataListView";
-            this.dataListView.Size = new System.Drawing.Size(721, 824);
+            this.dataListView.Size = new System.Drawing.Size(721, 814);
             this.dataListView.TabIndex = 0;
             this.dataListView.UseCompatibleStateImageBehavior = false;
             this.dataListView.View = System.Windows.Forms.View.Details;

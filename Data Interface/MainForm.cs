@@ -11,9 +11,10 @@ using System.Windows.Forms;
 
 namespace Data_Interface
 {
-    public partial class Form2 : Form
+    public partial class MainForm : Form
     {
-        public Form2(string i_UserFileName)
+
+        public MainForm(string i_UserFileName)
         {
             InitializeComponent();
 
@@ -21,8 +22,12 @@ namespace Data_Interface
 
             loadDataToListView();
 
-            
+            r_Form3.AddCurse += AddWithEvent;
+        }
 
+        public void AddWithEvent(string[] i_ToAdd)
+        {
+            addItemToListView(i_ToAdd);
         }
 
 
@@ -48,23 +53,23 @@ namespace Data_Interface
             dataListView.Items.Add(lvi);
         }
 
-        private readonly Form3 r_Form3 = new Form3();
+        private readonly AddItemsForm r_Form3 = new AddItemsForm();
 
         private void button1_Click(object sender, EventArgs e)
         {
             r_Form3.ClearNewData();
             r_Form3.ShowDialog();
+            
+            //LinkedList<string[]> dataList = r_Form3.NewDataArray;
+            //if (dataList.Count > 0)
+            //{
+            //    foreach (string[] item in dataList)
+            //    {
+            //        addItemToListView(item);
+            //    }
 
-            LinkedList<string[]> dataList = r_Form3.NewDataArray;
-            if (dataList.Count > 0)
-            {
-                foreach (string[] item in dataList)
-                {
-                    addItemToListView(item);
-                }
 
-
-            }
+            //}
 
             r_Form3.Hide();
         }

@@ -10,14 +10,24 @@ using System.Windows.Forms;
 
 namespace Data_Interface
 {
-    public partial class Form3 : Form
+    public partial class AddItemsForm : Form
     {
 
         private readonly LinkedList<string[]> r_NewDataList = new LinkedList<string[]>();
-            
-        public Form3()
+
+        public event Action<string[]> AddCurse;
+
+        public AddItemsForm()
         {
             InitializeComponent();
+        }
+
+        protected void OnAddCurse(string[] i_NewAddCurse)
+        {
+            if (AddCurse != null)
+            {
+                AddCurse.Invoke(i_NewAddCurse);
+            }
         }
 
         public LinkedList<string[]> NewDataArray
@@ -44,9 +54,9 @@ namespace Data_Interface
 
             textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text = string.Empty;
 
-            
+            OnAddCurse(newData);
 
-            r_NewDataList.AddLast(newData);
+           // r_NewDataList.AddLast(newData);
 
         }
 
