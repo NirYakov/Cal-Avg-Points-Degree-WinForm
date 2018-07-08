@@ -29,8 +29,8 @@ namespace Data_Interface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "" || textBox2.Text == "" || 
-                textBox3.Text == "" || textBox4.Text == "" )
+            if (textBox1.Text != "" || textBox2.Text != "" ||
+                textBox3.Text != "" || textBox4.Text != "")
             {
                 string[] newData = new string[5];
                 newData[(int)eSubItem.CourseName] = textBox1.Text;
@@ -57,6 +57,13 @@ namespace Data_Interface
 
                 OnAddCurse(newData);
             }
+            else
+            {
+                MessageBox.Show(
+@"You can't leave empty
+text in the text boxes");
+            }
         }
+
     }
 }

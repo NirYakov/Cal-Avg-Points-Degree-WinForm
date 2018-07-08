@@ -45,7 +45,7 @@ namespace Data_Interface
             {
                 return usersComboBox.SelectedItem.ToString();
             }
-        }
+        }        
 
         private void addToUserCombolist()
         {

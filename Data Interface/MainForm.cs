@@ -44,7 +44,7 @@ namespace Data_Interface
             {
                 string[] splitToColsString = item.Split(',');
                 addItemToListView(splitToColsString);
-            }            
+            }
         }
 
         private void addItemToListView(string[] i_DataToList)
@@ -61,72 +61,89 @@ namespace Data_Interface
 
             if (listViewCount % 2 == 0)
             {
-                dataListView.Items[listViewCount - 1].BackColor =  Color.LightGray; // Color.Gray ;
+                dataListView.Items[listViewCount - 1].BackColor = Color.LightGray; // Color.Gray ;
                 // dataListView.Items[listViewCount - 1].ForeColor = Color.White;
             }
 
             m_CalAvg.AddMarkAndPoints(i_DataToList[(int)eSubItem.Mark], i_DataToList[(int)eSubItem.Points]);
-            markLabel.Text = m_CalAvg.ToString() ;
-        }        
+            markLabel.Text = m_CalAvg.ToString();
+        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {           
+        private void addNewButton_Click(object sender, EventArgs e)
+        {
             r_Form3.ShowDialog();
-
-            // markLabel.Text = "21";
-           
             r_Form3.Hide();
-        }        
+        }
 
-        public void SaveNewData()
+        private void saveNewData()
         {
 
             if (saveChangesCheckBox.CheckState == CheckState.Checked)
-            {                
+            {
                 const string endFile = ".txt";
 
                 string[] allDataLines = new string[dataListView.Items.Count];
                 int i = 0;
                 foreach (ListViewItem item in dataListView.Items)
                 {
-                    //
-                    string toChange;
-                    if (item.SubItems[(int)eSubItem.Semseter].Text == "1")
-                    {
-                        toChange = "A";
-                    } else if (item.SubItems[(int)eSubItem.Semseter].Text == "2")
-                    {
-                        toChange = "B";
-                    }
-                    else
-                    {
-                        toChange = "C";
-                    }
-                    //
                     allDataLines[i++] = string.Format("{0},{1},{2},{3},{4}"
                    , item.SubItems[(int)eSubItem.CourseName].Text, item.SubItems[(int)eSubItem.Mark].Text
                    , item.SubItems[(int)eSubItem.Points].Text, item.SubItems[(int)eSubItem.Year].Text
-                   , toChange/*item.SubItems[(int)eSubItem.Semseter].Text*/);
+                   , item.SubItems[(int)eSubItem.Semseter].Text);
 
                 }
 
-                File.WriteAllLines(string.Format(@"UsersData\{0}{1}", r_UserFileName, endFile) , allDataLines);                
-                
+                File.WriteAllLines(string.Format(@"UsersData\{0}{1}", r_UserFileName, endFile), allDataLines);
+
             }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            saveNewData();
             MessageBox.Show("Bye im Closed (MainForm)");
         }
-    }    
-}
 
-public enum eSmester
-{
-    A = 'A' ,
-    B = 'B' ,
-    C = 'C'
+        private StatisticsForm m_StatisticsForm = null;
+
+        private void statisticsButton_Click(object sender, EventArgs e)
+        {
+            if (m_StatisticsForm == null)
+            {
+                m_StatisticsForm = new StatisticsForm();
+            }
+
+            Dictionary<string, CalculateAvg> yearAvg = new Dictionary<string, CalculateAvg>();
+            foreach (ListViewItem item in dataListView.Items)
+            {
+                string yearOfCurrentItem = item.SubItems[(int)eSubItem.Year].Text;
+                if (yearAvg.ContainsKey(yearOfCurrentItem))
+                {
+                    //MessageBox.Show( yearAvg[yearOfCurrentItem].AddMarkAndPoints(item.SubItems[(int)eSubItem.Mark].Text, item.SubItems[(int)eSubItem.Points].Text));
+                    /* yearAvg[yearOfCurrentItem] = */  yearAvg[yearOfCurrentItem].AddMarkAndPoints(item.SubItems[(int)eSubItem.Mark].Text, item.SubItems[(int)eSubItem.Points].Text);
+                    
+                    UpdateCalAvg(ref yearAvg[yearOfCurrentItem], item.SubItems[(int)eSubItem.Mark].Text, item.SubItems[(int)eSubItem.Points].Text);
+                    
+                    //MessageBox.Show(string.Format("{0} ,,, {1}",yearAvg[yearOfCurrentItem].AverageTotal , item.SubItems[(int)eSubItem.Mark].Text));
+                }
+                else
+                {
+                    CalculateAvg newCalAvg = new CalculateAvg();
+                    newCalAvg.AddMarkAndPoints(item.SubItems[(int)eSubItem.Mark].Text, item.SubItems[(int)eSubItem.Points].Text);
+                    yearAvg.Add(yearOfCurrentItem, newCalAvg);
+                }
+            }
+
+            m_StatisticsForm.LoadData(yearAvg);
+
+            m_StatisticsForm.ShowDialog();
+        }
+
+        private void UpdateCalAvg(ref CalculateAvg i_CurrentCalAvg, string i_Mark, string i_Points)
+        {
+            i_CurrentCalAvg.AddMarkAndPoints(i_Mark, i_Points);
+        }
+    }
 }
 
 public enum eSubItem

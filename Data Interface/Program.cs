@@ -52,8 +52,7 @@ namespace Data_Interface
                 // Application.Run(new Form2());
 
                 MainForm form2 = new MainForm(nameOfFile);
-                form2.ShowDialog();
-                form2.SaveNewData();
+                form2.ShowDialog();                
 
                 // Application.Run(new Form1());
             }

@@ -34,10 +34,11 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button1 = new System.Windows.Forms.Button();
+            this.addNewButton = new System.Windows.Forms.Button();
             this.saveChangesCheckBox = new System.Windows.Forms.CheckBox();
             this.avrgMarkLabel = new System.Windows.Forms.Label();
             this.markLabel = new System.Windows.Forms.Label();
+            this.statisticsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dataListView
@@ -82,15 +83,15 @@
             // 
             this.columnHeader5.Text = "Semester";
             // 
-            // button1
+            // addNewButton
             // 
-            this.button1.Location = new System.Drawing.Point(591, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 57);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Add New";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.addNewButton.Location = new System.Drawing.Point(591, 65);
+            this.addNewButton.Name = "addNewButton";
+            this.addNewButton.Size = new System.Drawing.Size(129, 57);
+            this.addNewButton.TabIndex = 1;
+            this.addNewButton.Text = "Add New";
+            this.addNewButton.UseVisualStyleBackColor = true;
+            this.addNewButton.Click += new System.EventHandler(this.addNewButton_Click);
             // 
             // saveChangesCheckBox
             // 
@@ -118,19 +119,30 @@
             this.markLabel.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.markLabel.Location = new System.Drawing.Point(277, 51);
             this.markLabel.Name = "markLabel";
-            this.markLabel.Size = new System.Drawing.Size(53, 38);
+            this.markLabel.Size = new System.Drawing.Size(98, 38);
             this.markLabel.TabIndex = 4;
-            this.markLabel.Text = "00";
+            this.markLabel.Text = "00.00";
+            // 
+            // statisticsButton
+            // 
+            this.statisticsButton.Location = new System.Drawing.Point(446, 65);
+            this.statisticsButton.Name = "statisticsButton";
+            this.statisticsButton.Size = new System.Drawing.Size(129, 57);
+            this.statisticsButton.TabIndex = 5;
+            this.statisticsButton.Text = "Statistics";
+            this.statisticsButton.UseVisualStyleBackColor = true;
+            this.statisticsButton.Click += new System.EventHandler(this.statisticsButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 1008);
+            this.Controls.Add(this.statisticsButton);
             this.Controls.Add(this.markLabel);
             this.Controls.Add(this.avrgMarkLabel);
             this.Controls.Add(this.saveChangesCheckBox);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.addNewButton);
             this.Controls.Add(this.dataListView);
             this.MinimumSize = new System.Drawing.Size(792, 768);
             this.Name = "MainForm";
@@ -150,9 +162,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addNewButton;
         private System.Windows.Forms.CheckBox saveChangesCheckBox;
         private System.Windows.Forms.Label avrgMarkLabel;
         private System.Windows.Forms.Label markLabel;
+        private System.Windows.Forms.Button statisticsButton;
     }
 }

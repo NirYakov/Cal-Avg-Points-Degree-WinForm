@@ -22,7 +22,7 @@ namespace Cal_And_Utills_To_Degree_Points
                 }
                 catch (Exception)
                 {
-                    answer = 0;
+                    answer = 0;                    
                 }
 
                 return answer; 
@@ -35,12 +35,12 @@ namespace Cal_And_Utills_To_Degree_Points
             m_PointsTotal += i_Points;
         }
 
-        public void AddMarkAndPoints(string i_MarkStr, string i_PointsStr)
+        public CalculateAvg AddMarkAndPoints(string i_MarkStr, string i_PointsStr)
         {
             float mark = float.Parse(i_MarkStr);
             float points = float.Parse(i_PointsStr);
             m_MarkTotal += mark * points ;
-            m_PointsTotal += points;
+            m_PointsTotal += points; return this ;
         }        
 
         public override string ToString()
