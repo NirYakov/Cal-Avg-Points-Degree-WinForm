@@ -49,12 +49,10 @@
             // Year
             // 
             this.Year.Text = "Year";
-            this.Year.Width = 157;
             // 
             // AverageMark
             // 
             this.AverageMark.Text = "Average Mark";
-            this.AverageMark.Width = 155;
             // 
             // StatisticsForm
             // 

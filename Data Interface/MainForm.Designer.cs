@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -35,10 +36,13 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.addNewButton = new System.Windows.Forms.Button();
-            this.saveChangesCheckBox = new System.Windows.Forms.CheckBox();
             this.avrgMarkLabel = new System.Windows.Forms.Label();
             this.markLabel = new System.Windows.Forms.Label();
             this.statisticsButton = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.messageHiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeMarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataListView
@@ -52,6 +56,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.dataListView.ContextMenuStrip = this.contextMenuStrip1;
             this.dataListView.FullRowSelect = true;
             this.dataListView.GridLines = true;
             this.dataListView.Location = new System.Drawing.Point(28, 172);
@@ -61,6 +66,7 @@
             this.dataListView.TabIndex = 0;
             this.dataListView.UseCompatibleStateImageBehavior = false;
             this.dataListView.View = System.Windows.Forms.View.Details;
+            //this.dataListView.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.dataListView_AfterLabelEdit);
             // 
             // columnHeader1
             // 
@@ -93,16 +99,6 @@
             this.addNewButton.UseVisualStyleBackColor = true;
             this.addNewButton.Click += new System.EventHandler(this.addNewButton_Click);
             // 
-            // saveChangesCheckBox
-            // 
-            this.saveChangesCheckBox.AutoSize = true;
-            this.saveChangesCheckBox.Location = new System.Drawing.Point(28, 124);
-            this.saveChangesCheckBox.Name = "saveChangesCheckBox";
-            this.saveChangesCheckBox.Size = new System.Drawing.Size(181, 29);
-            this.saveChangesCheckBox.TabIndex = 2;
-            this.saveChangesCheckBox.Text = "Save changes";
-            this.saveChangesCheckBox.UseVisualStyleBackColor = true;
-            // 
             // avrgMarkLabel
             // 
             this.avrgMarkLabel.AutoSize = true;
@@ -133,6 +129,29 @@
             this.statisticsButton.UseVisualStyleBackColor = true;
             this.statisticsButton.Click += new System.EventHandler(this.statisticsButton_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.messageHiToolStripMenuItem,
+            this.changeMarkToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(254, 76);
+            // 
+            // messageHiToolStripMenuItem
+            // 
+            this.messageHiToolStripMenuItem.Name = "messageHiToolStripMenuItem";
+            this.messageHiToolStripMenuItem.Size = new System.Drawing.Size(300, 36);
+            this.messageHiToolStripMenuItem.Text = "Remove course";
+            this.messageHiToolStripMenuItem.Click += new System.EventHandler(this.messageHiToolStripMenuItem_Click);
+            // 
+            // changeMarkToolStripMenuItem
+            // 
+            this.changeMarkToolStripMenuItem.Name = "changeMarkToolStripMenuItem";
+            this.changeMarkToolStripMenuItem.Size = new System.Drawing.Size(300, 36);
+            this.changeMarkToolStripMenuItem.Text = "Change mark";
+            this.changeMarkToolStripMenuItem.Click += new System.EventHandler(this.changeMarkToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -141,7 +160,6 @@
             this.Controls.Add(this.statisticsButton);
             this.Controls.Add(this.markLabel);
             this.Controls.Add(this.avrgMarkLabel);
-            this.Controls.Add(this.saveChangesCheckBox);
             this.Controls.Add(this.addNewButton);
             this.Controls.Add(this.dataListView);
             this.MinimumSize = new System.Drawing.Size(792, 768);
@@ -149,6 +167,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,9 +182,11 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button addNewButton;
-        private System.Windows.Forms.CheckBox saveChangesCheckBox;
         private System.Windows.Forms.Label avrgMarkLabel;
         private System.Windows.Forms.Label markLabel;
         private System.Windows.Forms.Button statisticsButton;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem messageHiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeMarkToolStripMenuItem;
     }
 }

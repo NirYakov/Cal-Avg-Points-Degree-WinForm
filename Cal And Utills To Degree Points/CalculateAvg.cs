@@ -40,8 +40,17 @@ namespace Cal_And_Utills_To_Degree_Points
             float mark = float.Parse(i_MarkStr);
             float points = float.Parse(i_PointsStr);
             m_MarkTotal += mark * points ;
-            m_PointsTotal += points; return this ;
-        }        
+            m_PointsTotal += points;
+            return this ;
+        }
+
+        public void SubstractMarkAndPoints(string i_MarkStr, string i_PointsStr)
+        {
+            float mark = float.Parse(i_MarkStr);
+            float points = float.Parse(i_PointsStr);
+            m_MarkTotal -= mark * points;
+            m_PointsTotal -= points;          
+        }
 
         public override string ToString()
         {

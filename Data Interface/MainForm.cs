@@ -15,8 +15,9 @@ namespace Data_Interface
     public partial class MainForm : Form
     {
         private readonly string r_UserFileName;
-        private readonly AddItemsForm r_Form3 = new AddItemsForm();
+        private AddItemsForm m_AddItemsForm = null;
         private CalculateAvg m_CalAvg;
+        private bool m_ChangedListView = false;
 
 
         public MainForm(string i_UserFileName)
@@ -26,12 +27,11 @@ namespace Data_Interface
             r_UserFileName = i_UserFileName;
 
             loadDataToListView();
-
-            r_Form3.AddCurse += AddWithEvent;
         }
 
         public void AddWithEvent(string[] i_ToAdd)
         {
+            m_ChangedListView = true;
             addItemToListView(i_ToAdd);
         }
 
@@ -71,37 +71,45 @@ namespace Data_Interface
 
         private void addNewButton_Click(object sender, EventArgs e)
         {
-            r_Form3.ShowDialog();
-            r_Form3.Hide();
+            if (m_AddItemsForm == null)
+            {
+                m_AddItemsForm = new AddItemsForm();
+                m_AddItemsForm.AddCurse += AddWithEvent;
+            }
+
+            m_AddItemsForm.ShowDialog();
+            m_AddItemsForm.Hide();
         }
 
         private void saveNewData()
         {
+            const string endFile = ".txt";
 
-            if (saveChangesCheckBox.CheckState == CheckState.Checked)
+            string[] allDataLines = new string[dataListView.Items.Count];
+            int i = 0;
+            foreach (ListViewItem item in dataListView.Items)
             {
-                const string endFile = ".txt";
-
-                string[] allDataLines = new string[dataListView.Items.Count];
-                int i = 0;
-                foreach (ListViewItem item in dataListView.Items)
-                {
-                    allDataLines[i++] = string.Format("{0},{1},{2},{3},{4}"
-                   , item.SubItems[(int)eSubItem.CourseName].Text, item.SubItems[(int)eSubItem.Mark].Text
-                   , item.SubItems[(int)eSubItem.Points].Text, item.SubItems[(int)eSubItem.Year].Text
-                   , item.SubItems[(int)eSubItem.Semseter].Text);
-
-                }
-
-                File.WriteAllLines(string.Format(@"UsersData\{0}{1}", r_UserFileName, endFile), allDataLines);
+                allDataLines[i++] = string.Format("{0},{1},{2},{3},{4}"
+               , item.SubItems[(int)eSubItem.CourseName].Text, item.SubItems[(int)eSubItem.Mark].Text
+               , item.SubItems[(int)eSubItem.Points].Text, item.SubItems[(int)eSubItem.Year].Text
+               , item.SubItems[(int)eSubItem.Semseter].Text);
 
             }
+
+            File.WriteAllLines(string.Format(@"UsersData\{0}{1}", r_UserFileName, endFile), allDataLines);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            saveNewData();
-            MessageBox.Show("Bye im Closed (MainForm)");
+            if (m_ChangedListView == true)
+            {
+                if (MessageBox.Show(
+@"Hi, if you want to save
+all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    saveNewData();
+                }
+            }
         }
 
         private StatisticsForm m_StatisticsForm = null;
@@ -119,12 +127,7 @@ namespace Data_Interface
                 string yearOfCurrentItem = item.SubItems[(int)eSubItem.Year].Text;
                 if (yearAvg.ContainsKey(yearOfCurrentItem))
                 {
-                    //MessageBox.Show( yearAvg[yearOfCurrentItem].AddMarkAndPoints(item.SubItems[(int)eSubItem.Mark].Text, item.SubItems[(int)eSubItem.Points].Text));
-                    /* yearAvg[yearOfCurrentItem] = */  yearAvg[yearOfCurrentItem].AddMarkAndPoints(item.SubItems[(int)eSubItem.Mark].Text, item.SubItems[(int)eSubItem.Points].Text);
-                    
-                    UpdateCalAvg(ref yearAvg[yearOfCurrentItem], item.SubItems[(int)eSubItem.Mark].Text, item.SubItems[(int)eSubItem.Points].Text);
-                    
-                    //MessageBox.Show(string.Format("{0} ,,, {1}",yearAvg[yearOfCurrentItem].AverageTotal , item.SubItems[(int)eSubItem.Mark].Text));
+                    yearAvg[yearOfCurrentItem] = yearAvg[yearOfCurrentItem].AddMarkAndPoints(item.SubItems[(int)eSubItem.Mark].Text, item.SubItems[(int)eSubItem.Points].Text);
                 }
                 else
                 {
@@ -135,14 +138,45 @@ namespace Data_Interface
             }
 
             m_StatisticsForm.LoadData(yearAvg);
-
             m_StatisticsForm.ShowDialog();
         }
 
-        private void UpdateCalAvg(ref CalculateAvg i_CurrentCalAvg, string i_Mark, string i_Points)
+        private void removeCurseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            i_CurrentCalAvg.AddMarkAndPoints(i_Mark, i_Points);
+            MessageBox.Show("Bye Course");
         }
+
+        private void messageHiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataListView.Items.Count > 0)
+            {
+                string removedItemName = dataListView.SelectedItems[0].SubItems[0].Text;
+                string removeItemMark = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Mark].Text;
+                string removeItemPoints = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Points].Text;
+
+                m_CalAvg.SubstractMarkAndPoints(removeItemMark, removeItemPoints);
+                markLabel.Text = m_CalAvg.ToString();
+
+                dataListView.Items.Remove(dataListView.SelectedItems[0]);
+                MessageBox.Show("Remove " + removedItemName);
+            }
+        }
+
+        private void changeMarkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //if (dataListView.Items.Count > 0)
+            //{
+            //    // dataListView.Items.Remove(dataListView.SelectedItems[0]);
+            //    dataListView.LabelEdit = true;
+            //    ListViewItem lvi = dataListView.SelectedItems[0];
+            //    lvi.BeginEdit();
+
+
+
+            //    dataListView.SelectedItems[0].BeginEdit();
+            //   // dataListView.LabelEdit = false;
+            //}
+        }      
     }
 }
 
@@ -153,5 +187,4 @@ public enum eSubItem
     Points,
     Year,
     Semseter
-
 }
