@@ -35,13 +35,14 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.messageHiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeMarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewButton = new System.Windows.Forms.Button();
             this.avrgMarkLabel = new System.Windows.Forms.Label();
             this.markLabel = new System.Windows.Forms.Label();
             this.statisticsButton = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.messageHiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeMarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoButton = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +67,6 @@
             this.dataListView.TabIndex = 0;
             this.dataListView.UseCompatibleStateImageBehavior = false;
             this.dataListView.View = System.Windows.Forms.View.Details;
-            //this.dataListView.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.dataListView_AfterLabelEdit);
             // 
             // columnHeader1
             // 
@@ -88,6 +88,29 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Semester";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.messageHiToolStripMenuItem,
+            this.changeMarkToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(254, 76);
+            // 
+            // messageHiToolStripMenuItem
+            // 
+            this.messageHiToolStripMenuItem.Name = "messageHiToolStripMenuItem";
+            this.messageHiToolStripMenuItem.Size = new System.Drawing.Size(253, 36);
+            this.messageHiToolStripMenuItem.Text = "Remove course";
+            this.messageHiToolStripMenuItem.Click += new System.EventHandler(this.messageHiToolStripMenuItem_Click);
+            // 
+            // changeMarkToolStripMenuItem
+            // 
+            this.changeMarkToolStripMenuItem.Name = "changeMarkToolStripMenuItem";
+            this.changeMarkToolStripMenuItem.Size = new System.Drawing.Size(253, 36);
+            this.changeMarkToolStripMenuItem.Text = "Change mark";
+            this.changeMarkToolStripMenuItem.Click += new System.EventHandler(this.changeMarkToolStripMenuItem_Click);
             // 
             // addNewButton
             // 
@@ -129,34 +152,22 @@
             this.statisticsButton.UseVisualStyleBackColor = true;
             this.statisticsButton.Click += new System.EventHandler(this.statisticsButton_Click);
             // 
-            // contextMenuStrip1
+            // infoButton
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.messageHiToolStripMenuItem,
-            this.changeMarkToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(254, 76);
-            // 
-            // messageHiToolStripMenuItem
-            // 
-            this.messageHiToolStripMenuItem.Name = "messageHiToolStripMenuItem";
-            this.messageHiToolStripMenuItem.Size = new System.Drawing.Size(300, 36);
-            this.messageHiToolStripMenuItem.Text = "Remove course";
-            this.messageHiToolStripMenuItem.Click += new System.EventHandler(this.messageHiToolStripMenuItem_Click);
-            // 
-            // changeMarkToolStripMenuItem
-            // 
-            this.changeMarkToolStripMenuItem.Name = "changeMarkToolStripMenuItem";
-            this.changeMarkToolStripMenuItem.Size = new System.Drawing.Size(300, 36);
-            this.changeMarkToolStripMenuItem.Text = "Change mark";
-            this.changeMarkToolStripMenuItem.Click += new System.EventHandler(this.changeMarkToolStripMenuItem_Click);
+            this.infoButton.Location = new System.Drawing.Point(34, 111);
+            this.infoButton.Name = "infoButton";
+            this.infoButton.Size = new System.Drawing.Size(104, 38);
+            this.infoButton.TabIndex = 6;
+            this.infoButton.Text = "Info";
+            this.infoButton.UseVisualStyleBackColor = true;
+            this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 1008);
+            this.Controls.Add(this.infoButton);
             this.Controls.Add(this.statisticsButton);
             this.Controls.Add(this.markLabel);
             this.Controls.Add(this.avrgMarkLabel);
@@ -188,5 +199,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem messageHiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeMarkToolStripMenuItem;
+        private System.Windows.Forms.Button infoButton;
     }
 }

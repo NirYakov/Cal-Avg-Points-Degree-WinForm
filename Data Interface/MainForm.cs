@@ -136,7 +136,8 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
                     yearAvg.Add(yearOfCurrentItem, newCalAvg);
                 }
             }
-
+            
+            m_StatisticsForm.CalAverageStats = m_CalAvg;
             m_StatisticsForm.LoadData(yearAvg);
             m_StatisticsForm.ShowDialog();
         }
@@ -176,7 +177,16 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
             //    dataListView.SelectedItems[0].BeginEdit();
             //   // dataListView.LabelEdit = false;
             //}
-        }      
+        }
+
+        private void infoButton_Click(object sender, EventArgs e)
+        {
+            float currentAvg = m_CalAvg.AverageTotal;
+            MessageBox.Show(string.Format("Marks total ->> {0}{2}Points total ->>{1}{2}Three points {3}{2}Four points {4}{2}Five points {5}"
+                ,m_CalAvg.MarkTotal,m_CalAvg.PointsTotal,Environment.NewLine
+                , m_CalAvg.ReachAvrg(78.2f, 3), m_CalAvg.ReachAvrg(78.2f, 4), m_CalAvg.ReachAvrg(78.2f, 5)
+                ));
+        }
     }
 }
 

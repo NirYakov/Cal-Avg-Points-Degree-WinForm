@@ -52,10 +52,15 @@
             // 
             this.newUserTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.newUserTextBox.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.newUserTextBox.Location = new System.Drawing.Point(126, 134);
             this.newUserTextBox.Name = "newUserTextBox";
             this.newUserTextBox.Size = new System.Drawing.Size(314, 31);
             this.newUserTextBox.TabIndex = 11;
+            this.newUserTextBox.Text = "Name";
+
+            this.newUserTextBox.Enter += new System.EventHandler(this.newUserTextBox_Enter);
+            this.newUserTextBox.Leave += new System.EventHandler(this.newUserTextBox_Leave);
             // 
             // newUserRadioButton
             // 

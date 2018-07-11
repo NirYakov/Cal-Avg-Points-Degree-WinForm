@@ -68,5 +68,23 @@ namespace Data_Interface
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void newUserTextBox_Enter(object sender, EventArgs e)
+        {
+            if (newUserTextBox.Text == "Name")
+            {
+                newUserTextBox.Text = "";
+                newUserTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void newUserTextBox_Leave(object sender, EventArgs e)
+        {
+            if (newUserTextBox.Text == "")
+            {
+                newUserTextBox.Text = "Name";
+                newUserTextBox.ForeColor = Color.Silver;
+            }
+        }
     }
 }
