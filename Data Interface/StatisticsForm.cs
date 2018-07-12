@@ -19,7 +19,7 @@ namespace Data_Interface
         }
 
         public CalculateAvg CalAverageStats { get; internal set; }
-        
+
 
         internal void LoadData(Dictionary<string, CalculateAvg> yearsAvg)
         {
@@ -28,7 +28,7 @@ namespace Data_Interface
             foreach (KeyValuePair<string, CalculateAvg> yearAvg in yearsAvg)
             {
                 ListViewItem lvi = new ListViewItem(yearAvg.Key);
-                lvi.SubItems.Add( yearAvg.Value.ToString());
+                lvi.SubItems.Add(yearAvg.Value.ToString());
 
                 avgsListView.Items.Add(lvi);
 
@@ -85,12 +85,59 @@ namespace Data_Interface
                     }
                 }
             }
-            
+
             points3Label.Text = string.Format(myFormatBase, points3);
             points4Label.Text = string.Format(myFormatBase, points4);
             points5Label.Text = string.Format(myFormatBase, points5);
 
-            
+            if (checkBox1.CheckState == CheckState.Checked)
+            {
+                EventArgs e = new EventArgs();
+                numericUpDown2_ValueChanged(myFormatBase, e);
+            }
+
+        }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            button1.BackColor = SystemColors.Highlight;
+            button1.ForeColor = Color.White;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.Transparent;
+            button1.ForeColor = Color.Black;
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            float points = Convert.ToSingle(numericUpDown2.Value);
+            float mark = Convert.ToSingle(numericUpDown1.Value);
+            float markNeeded = CalAverageStats.ReachAvrg(mark, points);
+
+            if (markNeeded > 100)
+            {
+                label3.ForeColor = Color.Red;
+            }
+            else
+            {
+                label3.ForeColor = Color.White;
+            }
+
+            label3.Text = string.Format("{0:0}", markNeeded);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.CheckState == CheckState.Checked)
+            {
+                numericUpDown2.Visible = label3.Visible = true;
+            }
+            else
+            {
+                numericUpDown2.Visible = label3.Visible = false;
+            }
         }
     }
 }
