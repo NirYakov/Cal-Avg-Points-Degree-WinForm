@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
+//to test
+using System.Diagnostics;
+// end here
+
 namespace Data_Interface
 {
     public partial class OpenningForm : Form
@@ -45,7 +49,7 @@ namespace Data_Interface
             {
                 return usersComboBox.SelectedItem.ToString();
             }
-        }        
+        }
 
         private void addToUserCombolist()
         {
@@ -65,8 +69,34 @@ namespace Data_Interface
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            bool toTheNextForm = false;
+
+            if (newUserRadioButton.Checked == true)
+            {
+                if (newUserTextBox.Text != "Name")
+                {
+                    toTheNextForm = true;
+                }
+                else
+                {
+                    Debug.WriteLine("Im in new insert and didnt insert any new name");
+                }
+            }
+            else if (usersComboBox.SelectedIndex > -1)
+            {
+                toTheNextForm = true;
+            }
+            else
+            {
+                Debug.WriteLine("Im in the comboBox and didnt chosen anything");
+
+            }
+
+            if (toTheNextForm == true)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private void newUserTextBox_Enter(object sender, EventArgs e)

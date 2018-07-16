@@ -49,6 +49,11 @@ namespace Data_Interface
         {
             float mark = Convert.ToSingle(numericUpDown1.Value);
             updateAllMarkPointsData(mark);
+
+            if (checkBox1.CheckState == CheckState.Checked)
+            {                
+                numericUpDown2_ValueChanged(sender, e);
+            }
         }
 
         private void updateAllMarkPointsData(float i_Mark)
@@ -88,13 +93,7 @@ namespace Data_Interface
 
             points3Label.Text = string.Format(myFormatBase, points3);
             points4Label.Text = string.Format(myFormatBase, points4);
-            points5Label.Text = string.Format(myFormatBase, points5);
-
-            if (checkBox1.CheckState == CheckState.Checked)
-            {
-                EventArgs e = new EventArgs();
-                numericUpDown2_ValueChanged(myFormatBase, e);
-            }
+            points5Label.Text = string.Format(myFormatBase, points5);          
 
         }
 
@@ -107,7 +106,7 @@ namespace Data_Interface
         private void button1_MouseLeave(object sender, EventArgs e)
         {
             button1.BackColor = Color.Transparent;
-            button1.ForeColor = Color.Black;
+            button1.ForeColor = SystemColors.Highlight;
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)

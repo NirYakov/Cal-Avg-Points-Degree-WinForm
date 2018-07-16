@@ -158,6 +158,7 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.button1.Location = new System.Drawing.Point(513, 135);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(39, 41);
@@ -245,6 +246,7 @@
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(590, 490);
             this.Name = "StatisticsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "StatisticsForm";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
