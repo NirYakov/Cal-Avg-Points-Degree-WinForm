@@ -73,13 +73,13 @@ namespace Data_Interface
 
             if (newUserRadioButton.Checked == true)
             {
-                if (newUserTextBox.Text != "Name")
+                if (newUserTextBox.Text != "Name" && !usersComboBox.Items.Contains(newUserTextBox.Text))
                 {
                     toTheNextForm = true;
                 }
                 else
                 {
-                    Debug.WriteLine("Im in new insert and didnt insert any new name");
+                    MessageBox.Show("Insert a new name");
                 }
             }
             else if (usersComboBox.SelectedIndex > -1)
@@ -88,8 +88,7 @@ namespace Data_Interface
             }
             else
             {
-                Debug.WriteLine("Im in the comboBox and didnt chosen anything");
-
+                MessageBox.Show("Chose one of the users.");
             }
 
             if (toTheNextForm == true)

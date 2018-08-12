@@ -63,7 +63,7 @@
             this.dataListView.Location = new System.Drawing.Point(28, 172);
             this.dataListView.MultiSelect = false;
             this.dataListView.Name = "dataListView";
-            this.dataListView.Size = new System.Drawing.Size(721, 814);
+            this.dataListView.Size = new System.Drawing.Size(721, 791);
             this.dataListView.TabIndex = 0;
             this.dataListView.UseCompatibleStateImageBehavior = false;
             this.dataListView.View = System.Windows.Forms.View.Details;
@@ -84,10 +84,12 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "Year";
+            this.columnHeader4.Width = 50;
             // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "Semester";
+            this.columnHeader5.Width = 66;
             // 
             // contextMenuStrip1
             // 
@@ -103,7 +105,7 @@
             this.messageHiToolStripMenuItem.Name = "messageHiToolStripMenuItem";
             this.messageHiToolStripMenuItem.Size = new System.Drawing.Size(253, 36);
             this.messageHiToolStripMenuItem.Text = "Remove course";
-            this.messageHiToolStripMenuItem.Click += new System.EventHandler(this.messageHiToolStripMenuItem_Click);
+            this.messageHiToolStripMenuItem.Click += new System.EventHandler(this.removeCourseToolStripMenuItem_Click);
             // 
             // changeMarkToolStripMenuItem
             // 
@@ -166,7 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 1008);
+            this.ClientSize = new System.Drawing.Size(776, 1083);
             this.Controls.Add(this.infoButton);
             this.Controls.Add(this.statisticsButton);
             this.Controls.Add(this.markLabel);

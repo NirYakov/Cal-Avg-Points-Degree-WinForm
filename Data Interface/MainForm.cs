@@ -19,7 +19,6 @@ namespace Data_Interface
         private CalculateAvg m_CalAvg;
         private bool m_ChangedListView = false;
 
-
         public MainForm(string i_UserFileName)
         {
             InitializeComponent();
@@ -35,7 +34,6 @@ namespace Data_Interface
             addItemToListView(i_ToAdd);
         }
 
-
         private void loadDataToListView()
         {
             const string endFile = ".txt";
@@ -47,6 +45,32 @@ namespace Data_Interface
             }
         }
 
+        private void rowsColorZebra()
+        {
+            short colorChanger = 0;
+            foreach (ListViewItem item in dataListView.Items)
+            {
+                if (colorChanger % 2 != 0)
+                {
+                    item.BackColor = Color.LightBlue;
+                }
+
+                colorChanger++;
+            }
+        }
+
+        private void rowColor(ListViewItem i_ListViewRowItem, int i_RowNumber)
+        {
+            if (i_RowNumber % 2 != 0)
+            {
+                i_ListViewRowItem.BackColor = Color.LightGray; // Color.LightBlue ;                
+            }
+            else
+            {
+                i_ListViewRowItem.BackColor = Color.White;
+            }
+        }
+
         private void addItemToListView(string[] i_DataToList)
         {
             ListViewItem lvi = new ListViewItem(i_DataToList[(int)eSubItem.CourseName]);
@@ -55,15 +79,9 @@ namespace Data_Interface
             lvi.SubItems.Add(i_DataToList[(int)eSubItem.Year]);
             lvi.SubItems.Add(i_DataToList[(int)eSubItem.Semseter]);
 
+            rowColor(lvi, dataListView.Items.Count);
+
             dataListView.Items.Add(lvi);
-
-            int listViewCount = dataListView.Items.Count;
-
-            if (listViewCount % 2 == 0)
-            {
-                dataListView.Items[listViewCount - 1].BackColor = Color.LightGray; // Color.Gray ;
-                // dataListView.Items[listViewCount - 1].ForeColor = Color.White;
-            }
 
             m_CalAvg.AddMarkAndPoints(i_DataToList[(int)eSubItem.Mark], i_DataToList[(int)eSubItem.Points]);
             markLabel.Text = m_CalAvg.ToString();
@@ -93,7 +111,6 @@ namespace Data_Interface
                , item.SubItems[(int)eSubItem.CourseName].Text, item.SubItems[(int)eSubItem.Mark].Text
                , item.SubItems[(int)eSubItem.Points].Text, item.SubItems[(int)eSubItem.Year].Text
                , item.SubItems[(int)eSubItem.Semseter].Text);
-
             }
 
             File.WriteAllLines(string.Format(@"UsersData\{0}{1}", r_UserFileName, endFile), allDataLines);
@@ -136,7 +153,7 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
                     yearAvg.Add(yearOfCurrentItem, newCalAvg);
                 }
             }
-            
+
             m_StatisticsForm.CalAverageStats = m_CalAvg;
             m_StatisticsForm.LoadData(yearAvg);
             m_StatisticsForm.ShowDialog();
@@ -147,43 +164,78 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
             MessageBox.Show("Bye Course");
         }
 
-        private void messageHiToolStripMenuItem_Click(object sender, EventArgs e)
+        private void removeCourseToolStripMenuItem_Click(object sender, EventArgs e) // ask guy ronen maybe . !!
         {
             if (dataListView.Items.Count > 0)
             {
-                string removedItemName = dataListView.SelectedItems[0].SubItems[0].Text;
+                string removedItemName = dataListView.SelectedItems[0].SubItems[(int)eSubItem.CourseName].Text;
                 string removeItemMark = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Mark].Text;
                 string removeItemPoints = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Points].Text;
 
-                m_CalAvg.SubstractMarkAndPoints(removeItemMark, removeItemPoints);
                 markLabel.Text = m_CalAvg.ToString();
 
+                int currentRowThatRemove = dataListView.SelectedItems.IndexOf(dataListView.SelectedItems[0]);
+
+                m_CalAvg.SubstractMarkAndPoints(removeItemMark, removeItemPoints);
+
                 dataListView.Items.Remove(dataListView.SelectedItems[0]);
+
+                int indexRowToColor = 0;
+                foreach (ListViewItem item in dataListView.Items)
+                {
+                    rowColor(item, indexRowToColor);
+                    indexRowToColor++;
+                }
+
+                int dataListViewLength = dataListView.Items.Count;
+
+                //for (int i = currentRowThatRemove; i < dataListViewLength; i++)
+                //{
+                //    rowColor(dataListView.Items[i], i);
+                //}
+
                 MessageBox.Show("Remove " + removedItemName);
             }
         }
 
+      //  private FormChangeMark() { }
+
         private void changeMarkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (dataListView.Items.Count > 0)
-            //{
-            //    // dataListView.Items.Remove(dataListView.SelectedItems[0]);
-            //    dataListView.LabelEdit = true;
-            //    ListViewItem lvi = dataListView.SelectedItems[0];
-            //    lvi.BeginEdit();
+            if (dataListView.Items.Count > 0)
+            {
+                string chosenCourseName = dataListView.SelectedItems[0].SubItems[(int)eSubItem.CourseName].Text;
+                
 
 
-
-            //    dataListView.SelectedItems[0].BeginEdit();
-            //   // dataListView.LabelEdit = false;
-            //}
+            }
         }
+
+
+        #region this is something that i cant know or explaine how to use and how to modifi to my personal use.
+
+        //private void changeMarkToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+
+        //    if (dataListView.Items.Count > 0)
+        //    {
+        //        // dataListView.Items.Remove(dataListView.SelectedItems[0]);
+        //        dataListView.LabelEdit = true;
+        //        ListViewItem lvi = dataListView.SelectedItems[0];
+        //        lvi.BeginEdit();
+
+        //        dataListView.SelectedItems[0].BeginEdit();
+        //        // dataListView.LabelEdit = false;
+        //    }
+        //}
+
+        #endregion
 
         private void infoButton_Click(object sender, EventArgs e)
         {
             float currentAvg = m_CalAvg.AverageTotal;
             MessageBox.Show(string.Format("Marks total ->> {0}{2}Points total ->>{1}{2}"
-                , m_CalAvg.MarkTotal, m_CalAvg.PointsTotal, Environment.NewLine));                
+                , m_CalAvg.MarkTotal, m_CalAvg.PointsTotal, Environment.NewLine));
         }
     }
 }

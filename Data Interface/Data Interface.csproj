@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormChangeMark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChangeMark.Designer.cs">
+      <DependentUpon>FormChangeMark.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpenningForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     <Compile Include="StatisticsForm.Designer.cs">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormChangeMark.resx">
+      <DependentUpon>FormChangeMark.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OpenningForm.resx">
       <DependentUpon>OpenningForm.cs</DependentUpon>
     </EmbeddedResource>
