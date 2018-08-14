@@ -42,7 +42,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelFreePointsChoose = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -53,10 +53,9 @@
             this.avgsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Year,
             this.AverageMark});
-            this.avgsListView.Dock = System.Windows.Forms.DockStyle.Left;
             this.avgsListView.Location = new System.Drawing.Point(0, 0);
             this.avgsListView.Name = "avgsListView";
-            this.avgsListView.Size = new System.Drawing.Size(274, 419);
+            this.avgsListView.Size = new System.Drawing.Size(274, 401);
             this.avgsListView.TabIndex = 1;
             this.avgsListView.UseCompatibleStateImageBehavior = false;
             this.avgsListView.View = System.Windows.Forms.View.Details;
@@ -199,17 +198,17 @@
             this.numericUpDown2.Visible = false;
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
-            // label3
+            // labelFreePointsChoose
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(462, 367);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 25);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "00";
-            this.label3.Visible = false;
+            this.labelFreePointsChoose.AutoSize = true;
+            this.labelFreePointsChoose.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelFreePointsChoose.ForeColor = System.Drawing.Color.White;
+            this.labelFreePointsChoose.Location = new System.Drawing.Point(462, 367);
+            this.labelFreePointsChoose.Name = "labelFreePointsChoose";
+            this.labelFreePointsChoose.Size = new System.Drawing.Size(36, 25);
+            this.labelFreePointsChoose.TabIndex = 13;
+            this.labelFreePointsChoose.Text = "00";
+            this.labelFreePointsChoose.Visible = false;
             // 
             // checkBox1
             // 
@@ -228,9 +227,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 419);
+            this.ClientSize = new System.Drawing.Size(564, 551);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelFreePointsChoose);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
@@ -270,7 +269,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelFreePointsChoose;
         private System.Windows.Forms.CheckBox checkBox1;
     }
 }

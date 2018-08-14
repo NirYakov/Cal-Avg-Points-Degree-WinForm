@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cal_And_Utills_To_Degree_Points;
+using Cal_Avrg_To_Degree_Points;
 
 namespace Data_Interface
 {
@@ -18,6 +18,8 @@ namespace Data_Interface
         private AddItemsForm m_AddItemsForm = null;
         private CalculateAvg m_CalAvg;
         private bool m_ChangedListView = false;
+        private StatisticsForm m_StatisticsForm = null;
+        private FormChangeMark m_FormToChangeTheMark = null;
 
         public MainForm(string i_UserFileName)
         {
@@ -45,32 +47,6 @@ namespace Data_Interface
             }
         }
 
-        private void rowsColorZebra()
-        {
-            short colorChanger = 0;
-            foreach (ListViewItem item in dataListView.Items)
-            {
-                if (colorChanger % 2 != 0)
-                {
-                    item.BackColor = Color.LightBlue;
-                }
-
-                colorChanger++;
-            }
-        }
-
-        private void rowColor(ListViewItem i_ListViewRowItem, int i_RowNumber)
-        {
-            if (i_RowNumber % 2 != 0)
-            {
-                i_ListViewRowItem.BackColor = Color.LightGray; // Color.LightBlue ;                
-            }
-            else
-            {
-                i_ListViewRowItem.BackColor = Color.White;
-            }
-        }
-
         private void addItemToListView(string[] i_DataToList)
         {
             ListViewItem lvi = new ListViewItem(i_DataToList[(int)eSubItem.CourseName]);
@@ -79,19 +55,19 @@ namespace Data_Interface
             lvi.SubItems.Add(i_DataToList[(int)eSubItem.Year]);
             lvi.SubItems.Add(i_DataToList[(int)eSubItem.Semseter]);
 
-            rowColor(lvi, dataListView.Items.Count);
+            UtillsColors.RowColor(lvi, dataListView.Items.Count);
 
             dataListView.Items.Add(lvi);
 
             m_CalAvg.AddMarkAndPoints(i_DataToList[(int)eSubItem.Mark], i_DataToList[(int)eSubItem.Points]);
-            markLabel.Text = m_CalAvg.ToString();
+            updateMarkAverageLabel();
         }
 
         private void addNewButton_Click(object sender, EventArgs e)
         {
             if (m_AddItemsForm == null)
             {
-                m_AddItemsForm = new AddItemsForm();
+                m_AddItemsForm = AddItemsForm.GetInstanceOfAddItemsForm();
                 m_AddItemsForm.AddCurse += AddWithEvent;
             }
 
@@ -129,15 +105,8 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
             }
         }
 
-        private StatisticsForm m_StatisticsForm = null;
-
-        private void statisticsButton_Click(object sender, EventArgs e)
+        private Dictionary<string, CalculateAvg> GetDictionaryMarkByYears()
         {
-            if (m_StatisticsForm == null)
-            {
-                m_StatisticsForm = new StatisticsForm();
-            }
-
             Dictionary<string, CalculateAvg> yearAvg = new Dictionary<string, CalculateAvg>();
             foreach (ListViewItem item in dataListView.Items)
             {
@@ -154,14 +123,17 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
                 }
             }
 
-            m_StatisticsForm.CalAverageStats = m_CalAvg;
-            m_StatisticsForm.LoadData(yearAvg);
-            m_StatisticsForm.ShowDialog();
+            return yearAvg;
         }
 
-        private void removeCurseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void statisticsButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Bye Course");
+            if (m_StatisticsForm == null)
+            {
+                m_StatisticsForm = StatisticsForm.GetInstanceOfStaticsForm();
+            }
+
+            m_StatisticsForm.ShowDialog(GetDictionaryMarkByYears(), m_CalAvg);
         }
 
         private void removeCourseToolStripMenuItem_Click(object sender, EventArgs e) // ask guy ronen maybe . !!
@@ -172,8 +144,6 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
                 string removeItemMark = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Mark].Text;
                 string removeItemPoints = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Points].Text;
 
-                markLabel.Text = m_CalAvg.ToString();
-
                 int currentRowThatRemove = dataListView.SelectedItems.IndexOf(dataListView.SelectedItems[0]);
 
                 m_CalAvg.SubstractMarkAndPoints(removeItemMark, removeItemPoints);
@@ -183,7 +153,7 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
                 int indexRowToColor = 0;
                 foreach (ListViewItem item in dataListView.Items)
                 {
-                    rowColor(item, indexRowToColor);
+                    UtillsColors.RowColor(item, indexRowToColor);
                     indexRowToColor++;
                 }
 
@@ -192,25 +162,44 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
                 //for (int i = currentRowThatRemove; i < dataListViewLength; i++)
                 //{
                 //    rowColor(dataListView.Items[i], i);
-                //}
+                //}                
+
+                updateMarkAverageLabel();
+
+                m_ChangedListView = true;
 
                 MessageBox.Show("Remove " + removedItemName);
             }
         }
 
-      //  private FormChangeMark() { }
-
         private void changeMarkToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dataListView.Items.Count > 0)
             {
-                string chosenCourseName = dataListView.SelectedItems[0].SubItems[(int)eSubItem.CourseName].Text;
-                
+                if (m_FormToChangeTheMark == null)
+                {
+                    m_FormToChangeTheMark = FormChangeMark.GetInstanceOfFormChangeMark();
+                }
 
+                ListViewItem itemToChange = dataListView.SelectedItems[0];
+                string chosenCourseName = itemToChange.SubItems[(int)eSubItem.CourseName].Text;
+                byte markToChange = byte.Parse(itemToChange.SubItems[(int)eSubItem.Mark].Text);
 
+                if (m_FormToChangeTheMark.ShowDialog(chosenCourseName, markToChange) == DialogResult.OK)
+                {
+                    short totalOffset = (short)(m_FormToChangeTheMark.LastValue - markToChange);
+                    itemToChange.SubItems[(int)eSubItem.Mark].Text = m_FormToChangeTheMark.LastValue.ToString();
+                    m_CalAvg.ChangeMarkAndTotal(totalOffset.ToString(), itemToChange.SubItems[(int)eSubItem.Points].Text);
+                    updateMarkAverageLabel();
+                    m_ChangedListView = true;
+                }
             }
         }
 
+        private void updateMarkAverageLabel()
+        {
+            markLabel.Text = m_CalAvg.ToString();
+        }
 
         #region this is something that i cant know or explaine how to use and how to modifi to my personal use.
 
@@ -237,14 +226,29 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
             MessageBox.Show(string.Format("Marks total ->> {0}{2}Points total ->>{1}{2}"
                 , m_CalAvg.MarkTotal, m_CalAvg.PointsTotal, Environment.NewLine));
         }
+
+        private void showPotensialValueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataListView.Items.Count > 0)
+            {
+                string markString = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Mark].Text;
+                string pointsString = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Points].Text;
+
+                float differenceValue = CalculateAvg.DifferenceValueTo100(markString, pointsString);
+
+                MessageBox.Show(string.Format(
+                        "Potensian more mark (untill up to 100) {0} the potensian is {1}", Environment.NewLine, differenceValue)
+                        , "Mark Potenseal");
+            }
+        }
     }
 }
 
-public enum eSubItem
-{
-    CourseName,
-    Mark,
-    Points,
-    Year,
-    Semseter
-}
+    public enum eSubItem : byte
+    {
+        CourseName,
+        Mark,
+        Points,
+        Year,
+        Semseter
+    }

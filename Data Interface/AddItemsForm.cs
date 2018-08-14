@@ -13,10 +13,22 @@ namespace Data_Interface
     public partial class AddItemsForm : Form
     {       
         public event Action<string[]> AddCurse;
+        private static AddItemsForm s_Instance = null;
 
-        public AddItemsForm()
+
+        private AddItemsForm()
         {
             InitializeComponent();
+        }
+
+        public static AddItemsForm GetInstanceOfAddItemsForm()
+        {
+            if (s_Instance == null)
+            {
+                s_Instance = new AddItemsForm();
+            }
+
+            return s_Instance;
         }
 
         protected void OnAddCurse(string[] i_NewAddCurse)

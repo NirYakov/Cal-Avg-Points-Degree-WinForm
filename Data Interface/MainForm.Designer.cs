@@ -43,6 +43,7 @@
             this.markLabel = new System.Windows.Forms.Label();
             this.statisticsButton = new System.Windows.Forms.Button();
             this.infoButton = new System.Windows.Forms.Button();
+            this.showPotensialValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,21 +97,22 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.messageHiToolStripMenuItem,
-            this.changeMarkToolStripMenuItem});
+            this.changeMarkToolStripMenuItem,
+            this.showPotensialValueToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(254, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(316, 112);
             // 
             // messageHiToolStripMenuItem
             // 
             this.messageHiToolStripMenuItem.Name = "messageHiToolStripMenuItem";
-            this.messageHiToolStripMenuItem.Size = new System.Drawing.Size(253, 36);
+            this.messageHiToolStripMenuItem.Size = new System.Drawing.Size(300, 36);
             this.messageHiToolStripMenuItem.Text = "Remove course";
             this.messageHiToolStripMenuItem.Click += new System.EventHandler(this.removeCourseToolStripMenuItem_Click);
             // 
             // changeMarkToolStripMenuItem
             // 
             this.changeMarkToolStripMenuItem.Name = "changeMarkToolStripMenuItem";
-            this.changeMarkToolStripMenuItem.Size = new System.Drawing.Size(253, 36);
+            this.changeMarkToolStripMenuItem.Size = new System.Drawing.Size(300, 36);
             this.changeMarkToolStripMenuItem.Text = "Change mark";
             this.changeMarkToolStripMenuItem.Click += new System.EventHandler(this.changeMarkToolStripMenuItem_Click);
             // 
@@ -164,6 +166,14 @@
             this.infoButton.UseVisualStyleBackColor = true;
             this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
             // 
+            // showPotensialValueToolStripMenuItem
+            // 
+            this.showPotensialValueToolStripMenuItem.ForeColor = System.Drawing.Color.Red;
+            this.showPotensialValueToolStripMenuItem.Name = "showPotensialValueToolStripMenuItem";
+            this.showPotensialValueToolStripMenuItem.Size = new System.Drawing.Size(315, 36);
+            this.showPotensialValueToolStripMenuItem.Text = "Show Potensial Value";
+            this.showPotensialValueToolStripMenuItem.Click += new System.EventHandler(this.showPotensialValueToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -202,5 +212,6 @@
         private System.Windows.Forms.ToolStripMenuItem messageHiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeMarkToolStripMenuItem;
         private System.Windows.Forms.Button infoButton;
+        private System.Windows.Forms.ToolStripMenuItem showPotensialValueToolStripMenuItem;
     }
 }

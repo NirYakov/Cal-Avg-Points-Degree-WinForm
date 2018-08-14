@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cal_And_Utills_To_Degree_Points
+namespace Cal_Avrg_To_Degree_Points
 {
     public struct CalculateAvg
     {
@@ -33,18 +33,6 @@ namespace Cal_And_Utills_To_Degree_Points
 
         public float PointsTotal { get { return m_PointsTotal; } }
 
-        public void AddToTotals (float i_AddMarksTotal , float i_AddPointsTotal)
-        {
-            m_MarkTotal += i_AddMarksTotal;
-            m_PointsTotal += i_AddPointsTotal;
-        }
-
-        public void AddMarkAndPoints(float i_Mark , float i_Points)
-        {
-            m_MarkTotal += i_Mark * i_Points;
-            m_PointsTotal += i_Points;
-        }
-
         public float ReachAvrg(float i_WantedMark , float i_GivenPoints)
         {
             float totalRightSide = (i_WantedMark * (m_PointsTotal + i_GivenPoints)) - m_MarkTotal;
@@ -52,19 +40,23 @@ namespace Cal_And_Utills_To_Degree_Points
             return answer;
         } 
 
-        public CalculateAvg AddMarkAndPoints(string i_MarkStr, string i_PointsStr)
+        public void AddMarkAndPoints(float i_Mark, float i_Points)
         {
-            float mark = float.Parse(i_MarkStr);
-            float points = float.Parse(i_PointsStr);
-            m_MarkTotal += mark * points ;
-            m_PointsTotal += points;
-            return this ;
+            m_MarkTotal += i_Mark * i_Points;
+            m_PointsTotal += i_Points;
         }
 
-        public void SubstractMarkAndPoints(string i_MarkStr, string i_PointsStr)
+        public CalculateAvg AddMarkAndPoints(string i_MarkString, string i_PointsString)
         {
-            float mark = float.Parse(i_MarkStr);
-            float points = float.Parse(i_PointsStr);
+            parseTwoNumbers(i_MarkString, out float mark, i_PointsString, out float points);
+            m_MarkTotal += mark * points ;
+            m_PointsTotal += points;
+            return this;
+        }
+
+        public void SubstractMarkAndPoints(string i_MarkString, string i_PointsString)
+        {           
+            parseTwoNumbers(i_MarkString, out float mark, i_PointsString, out float points);
             m_MarkTotal -= mark * points;
             m_PointsTotal -= points;          
         }
@@ -72,6 +64,34 @@ namespace Cal_And_Utills_To_Degree_Points
         public override string ToString()
         {
             return string.Format("{0:0.00}", AverageTotal);
+        }        
+
+        public void ChangeMarkAndTotal(string i_MarkString, string i_PointsString)
+        {
+            //float markOffset = float.Parse(i_Mark);
+            //float points = float.Parse(i_Points);
+            parseTwoNumbers(i_MarkString, out float markOffset, i_PointsString, out float points);
+
+            m_MarkTotal += markOffset * points;
         }
+
+        private static void parseTwoNumbers( string i_MarkString,out float i_Mark ,string i_PointsString ,  out float i_Points)
+        {
+            i_Mark = float.Parse(i_MarkString);
+            i_Points = float.Parse(i_PointsString);
+        }
+
+        // Add Method Dist to get the best value course
+
+        public static float DifferenceValueTo100(string i_MarkString , string i_PointsString)
+        {
+            const float maxMark = 100f;
+            parseTwoNumbers(i_MarkString, out float mark, i_PointsString , out float points);
+            float differenceInMark = maxMark - mark;
+            float differnceValue = differenceInMark * points;
+
+            return differnceValue;
+        }
+
     }
 }

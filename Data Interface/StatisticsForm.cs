@@ -7,21 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cal_And_Utills_To_Degree_Points;
+using Cal_Avrg_To_Degree_Points;
 
 namespace Data_Interface
 {
     public partial class StatisticsForm : Form
     {
-        public StatisticsForm()
+        const byte k_MaxMark = 100;
+        private static StatisticsForm s_Instance = null;
+
+        private StatisticsForm()
         {
             InitializeComponent();
         }
 
+        public static StatisticsForm GetInstanceOfStaticsForm()
+        {
+
+            if (s_Instance == null)
+            {
+                s_Instance = new StatisticsForm();
+            }
+
+            return s_Instance;
+        }
+
         public CalculateAvg CalAverageStats { get; internal set; }
 
-
-        internal void LoadData(Dictionary<string, CalculateAvg> yearsAvg)
+        public void LoadData(Dictionary<string, CalculateAvg> yearsAvg)
         {
             avgsListView.Items.Clear();
 
@@ -30,14 +43,10 @@ namespace Data_Interface
                 ListViewItem lvi = new ListViewItem(yearAvg.Key);
                 lvi.SubItems.Add(yearAvg.Value.ToString());
 
+                UtillsColors.RowColor(lvi , avgsListView.Items.Count);
+
                 avgsListView.Items.Add(lvi);
-
-                int listViewCount = avgsListView.Items.Count;
-
-                if (listViewCount % 2 == 0)
-                {
-                    avgsListView.Items[listViewCount - 1].BackColor = Color.LightGray;
-                }
+                
             }
 
             float AvrgTotal = CalAverageStats.AverageTotal;
@@ -51,49 +60,40 @@ namespace Data_Interface
             updateAllMarkPointsData(mark);
 
             if (checkBox1.CheckState == CheckState.Checked)
-            {                
+            {
                 numericUpDown2_ValueChanged(sender, e);
             }
         }
 
+        private void markColorsIfPassMaxMark(Label i_LabelMark, float i_Mark, Color i_DefualtColor, Color i_OutOfLimit)
+        {
+            Color currectColor = i_DefualtColor;
+
+            if (i_Mark > k_MaxMark)
+            {
+                currectColor = i_OutOfLimit;
+            }
+
+            i_LabelMark.ForeColor = currectColor;
+        }
+
         private void updateAllMarkPointsData(float i_Mark)
         {
+            // k_MaxMark = 100
+
             float points3 = CalAverageStats.ReachAvrg(i_Mark, 3);
             float points4 = CalAverageStats.ReachAvrg(i_Mark, 4);
             float points5 = CalAverageStats.ReachAvrg(i_Mark, 5);
 
             string myFormatBase = "{0:0}";
 
-            if (points5 > 100)
-            {
-                points3Label.ForeColor = points4Label.ForeColor = points5Label.ForeColor = Color.Red;
-            }
-            else
-            {
-                points5Label.ForeColor = Color.Black;
-
-                if (points4 > 100)
-                {
-                    points4Label.ForeColor = Color.Red;
-                }
-                else
-                {
-                    points4Label.ForeColor = SystemColors.Highlight;
-
-                    if (points3 > 100)
-                    {
-                        points3Label.ForeColor = Color.Red;
-                    }
-                    else
-                    {
-                        points3Label.ForeColor = Color.Black;
-                    }
-                }
-            }
+            markColorsIfPassMaxMark(points5Label, points5, Color.Black, Color.Red);
+            markColorsIfPassMaxMark(points4Label, points4, SystemColors.Highlight, Color.Red);
+            markColorsIfPassMaxMark(points3Label, points3, Color.Black, Color.Red);
 
             points3Label.Text = string.Format(myFormatBase, points3);
             points4Label.Text = string.Format(myFormatBase, points4);
-            points5Label.Text = string.Format(myFormatBase, points5);          
+            points5Label.Text = string.Format(myFormatBase, points5);
 
         }
 
@@ -111,32 +111,40 @@ namespace Data_Interface
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            float points = Convert.ToSingle(numericUpDown2.Value);
+            // k_MaxMark = 100
             float mark = Convert.ToSingle(numericUpDown1.Value);
+            float points = Convert.ToSingle(numericUpDown2.Value);
             float markNeeded = CalAverageStats.ReachAvrg(mark, points);
 
-            if (markNeeded > 100)
+            if (markNeeded > k_MaxMark)
             {
-                label3.ForeColor = Color.Red;
+                labelFreePointsChoose.ForeColor = Color.Red;
             }
             else
             {
-                label3.ForeColor = Color.White;
+                labelFreePointsChoose.ForeColor = Color.White;
             }
 
-            label3.Text = string.Format("{0:0}", markNeeded);
+            labelFreePointsChoose.Text = string.Format("{0:0}", markNeeded);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.CheckState == CheckState.Checked)
             {
-                numericUpDown2.Visible = label3.Visible = true;
+                numericUpDown2.Visible = labelFreePointsChoose.Visible = true;
             }
             else
             {
-                numericUpDown2.Visible = label3.Visible = false;
+                numericUpDown2.Visible = labelFreePointsChoose.Visible = false;
             }
+        }
+
+        public void ShowDialog(Dictionary<string, CalculateAvg> yearAvg, CalculateAvg m_CalAvg)
+        {
+            CalAverageStats = m_CalAvg;
+            LoadData(yearAvg);
+            ShowDialog();
         }
     }
 }

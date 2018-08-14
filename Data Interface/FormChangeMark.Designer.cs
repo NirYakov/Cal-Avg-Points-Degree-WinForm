@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
+            this.numericUpDownMarkToChange = new System.Windows.Forms.NumericUpDown();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.labelCourseName = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarkToChange)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -45,21 +45,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Change course mark in  :\r\n";
             // 
-            // numericUpDown1
+            // numericUpDownMarkToChange
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(28, 72);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(88, 31);
-            this.numericUpDown1.TabIndex = 1;
+            this.numericUpDownMarkToChange.Location = new System.Drawing.Point(28, 72);
+            this.numericUpDownMarkToChange.Name = "numericUpDownMarkToChange";
+            this.numericUpDownMarkToChange.Size = new System.Drawing.Size(88, 31);
+            this.numericUpDownMarkToChange.TabIndex = 1;
             // 
-            // button1
+            // buttonSave
             // 
-            this.button1.Location = new System.Drawing.Point(355, 64);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 45);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonSave.Location = new System.Drawing.Point(354, 66);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(105, 45);
+            this.buttonSave.TabIndex = 2;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // labelCourseName
             // 
@@ -75,16 +76,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(478, 124);
+            this.ClientSize = new System.Drawing.Size(479, 128);
             this.Controls.Add(this.labelCourseName);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.numericUpDownMarkToChange);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(505, 195);
             this.Name = "FormChangeMark";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Change Mark";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMarkToChange)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,8 +97,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NumericUpDown numericUpDownMarkToChange;
+        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label labelCourseName;
     }
 }

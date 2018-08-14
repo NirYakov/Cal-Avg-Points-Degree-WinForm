@@ -23,20 +23,19 @@ namespace Data_Interface
 
         static public void ActiveMethod()
         {
-                FileCreate();
+            FileCreate();
 
             OpenningForm form1 = new OpenningForm();
 
-            
             if (form1.ShowDialog() == DialogResult.OK)
             {
 
-            string nameOfFile;
+                string nameOfFile;
 
                 if (form1.IsHaveNewUser() == true)
                 {
                     nameOfFile = form1.NewUser;
-                    FileStream fs =  File.OpenWrite(string.Format(@"UsersData\{0}.txt",nameOfFile));
+                    FileStream fs = File.OpenWrite(string.Format(@"UsersData\{0}.txt", nameOfFile));
                     fs.Close();
                 }
                 else
@@ -52,7 +51,7 @@ namespace Data_Interface
                 // Application.Run(new Form2());
 
                 MainForm form2 = new MainForm(nameOfFile);
-                form2.ShowDialog();                
+                form2.ShowDialog();
 
                 // Application.Run(new Form1());
             }
@@ -66,7 +65,6 @@ namespace Data_Interface
             // FileStream fs = File.OpenWrite(@"UsersData\Nir y.txt");
 
             File.WriteAllLines(@"UsersData\Nir y.txt", nirCurses);
-
         }
 
 
