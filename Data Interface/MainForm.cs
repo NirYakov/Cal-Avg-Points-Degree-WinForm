@@ -126,6 +126,22 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
             return yearAvg;
         }
 
+        private List<CourseDiffrence> CourseDiffrencesInData()
+        {
+            List<CourseDiffrence> allCourseDiffrences = new List<CourseDiffrence>(dataListView.Items.Count);
+            foreach (ListViewItem item in dataListView.Items)
+            {
+                float diffrenceValue = CalculateAvg.DifferenceValueTo100(
+                    item.SubItems[(int)eSubItem.Mark].Text , item.SubItems[(int)eSubItem.Points].Text);
+
+                allCourseDiffrences.Add(new CourseDiffrence(
+                        item.SubItems[(int)eSubItem.CourseName].Text, diffrenceValue));
+                    
+            }
+
+            return allCourseDiffrences;
+        }
+
         private void statisticsButton_Click(object sender, EventArgs e)
         {
             if (m_StatisticsForm == null)
@@ -133,6 +149,7 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
                 m_StatisticsForm = StatisticsForm.GetInstanceOfStaticsForm();
             }
 
+            m_StatisticsForm.BestCourseValueToImprove(CourseDiffrencesInData());
             m_StatisticsForm.ShowDialog(GetDictionaryMarkByYears(), m_CalAvg);
         }
 
@@ -226,7 +243,7 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
             MessageBox.Show(string.Format("Marks total ->> {0}{2}Points total ->>{1}{2}"
                 , m_CalAvg.MarkTotal, m_CalAvg.PointsTotal, Environment.NewLine));
         }
-
+        
         private void showPotensialValueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dataListView.Items.Count > 0)

@@ -81,8 +81,6 @@ namespace Cal_Avrg_To_Degree_Points
             i_Points = float.Parse(i_PointsString);
         }
 
-        // Add Method Dist to get the best value course
-
         public static float DifferenceValueTo100(string i_MarkString , string i_PointsString)
         {
             const float maxMark = 100f;

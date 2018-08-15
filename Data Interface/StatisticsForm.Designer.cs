@@ -44,6 +44,10 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.labelFreePointsChoose = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.labelBest = new System.Windows.Forms.Label();
+            this.labelSecoundBest = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -223,11 +227,53 @@
             this.checkBox1.UseVisualStyleBackColor = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(23, 459);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(238, 25);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Best course to improve:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(23, 505);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(329, 25);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Secound Best course to improve:";
+            // 
+            // labelBest
+            // 
+            this.labelBest.AutoSize = true;
+            this.labelBest.Location = new System.Drawing.Point(372, 459);
+            this.labelBest.Name = "labelBest";
+            this.labelBest.Size = new System.Drawing.Size(125, 25);
+            this.labelBest.TabIndex = 17;
+            this.labelBest.Text = "Not avilable";
+            // 
+            // labelSecoundBest
+            // 
+            this.labelSecoundBest.AutoSize = true;
+            this.labelSecoundBest.Location = new System.Drawing.Point(372, 505);
+            this.labelSecoundBest.Name = "labelSecoundBest";
+            this.labelSecoundBest.Size = new System.Drawing.Size(125, 25);
+            this.labelSecoundBest.TabIndex = 18;
+            this.labelSecoundBest.Text = "Not avilable";
+            // 
             // StatisticsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 551);
+            this.Controls.Add(this.labelSecoundBest);
+            this.Controls.Add(this.labelBest);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.labelFreePointsChoose);
             this.Controls.Add(this.numericUpDown2);
@@ -271,5 +317,9 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label labelFreePointsChoose;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelBest;
+        private System.Windows.Forms.Label labelSecoundBest;
     }
 }

@@ -43,10 +43,10 @@ namespace Data_Interface
                 ListViewItem lvi = new ListViewItem(yearAvg.Key);
                 lvi.SubItems.Add(yearAvg.Value.ToString());
 
-                UtillsColors.RowColor(lvi , avgsListView.Items.Count);
+                UtillsColors.RowColor(lvi, avgsListView.Items.Count);
 
                 avgsListView.Items.Add(lvi);
-                
+
             }
 
             float AvrgTotal = CalAverageStats.AverageTotal;
@@ -145,6 +145,54 @@ namespace Data_Interface
             CalAverageStats = m_CalAvg;
             LoadData(yearAvg);
             ShowDialog();
+        }
+
+        // Do the best marks and more in the stasitic and maybe the secound also .
+
+        public void BestCourseValueToImprove(List<CourseDiffrence> allCourseDiffrences)
+        {
+            const string notAvilable = "Not avilable";
+            string toLabelBest1 = notAvilable, toLabelBest2 = notAvilable;
+
+            if (allCourseDiffrences.Count > 1)
+            {
+                CourseDiffrence max1, max2;
+
+                max1 = allCourseDiffrences[0];
+                // max2 =  new CourseDiffrence("n/a" , 0f) ;//allCourseDiffrences[1];
+                max2 = allCourseDiffrences[1];
+
+                //if (max1 < max2)
+                //{
+                //    max2 = max1;
+                //    max1 = allCourseDiffrences[0];
+                //}
+
+                foreach (CourseDiffrence item in allCourseDiffrences.Skip(1))
+                {
+                    if (max1 < item)
+                    {
+                        max2 = max1;
+                        max1 = item;
+                    }
+                }
+
+
+                toLabelBest1 = max1.CourseName;
+                toLabelBest2 = max2.CourseName;
+
+                // Try The 2 Bests Algorit Tomorrow. conver to c# and do it good for my prog.
+                // maybe to open a class for this algorit and beaiver.
+
+            }
+            else if (allCourseDiffrences.Count == 1)
+            {
+                toLabelBest1 = allCourseDiffrences[0].CourseName;
+            }
+
+            labelBest.Text = toLabelBest1;
+            labelSecoundBest.Text = toLabelBest2;
+
         }
     }
 }
