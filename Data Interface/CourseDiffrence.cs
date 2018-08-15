@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data_Interface
 {
-    public struct CourseDiffrence
+    public struct CourseDiffrence : IComparable<CourseDiffrence>
     {
         private readonly string r_CourseName;
         private readonly float r_DiffrenceNumber;
@@ -28,6 +28,22 @@ namespace Data_Interface
         public static bool operator <(CourseDiffrence courseDiffrenceLeft, CourseDiffrence courseDiffrenceRight)
         {
             return courseDiffrenceLeft.DiffrenceNumber < courseDiffrenceRight.DiffrenceNumber;
+        }
+
+        public int CompareTo(CourseDiffrence other)
+        {
+            int answer = 0;
+
+            if (r_DiffrenceNumber > other.r_DiffrenceNumber)
+            {
+                answer = -1;
+            }
+            else if (r_DiffrenceNumber < other.r_DiffrenceNumber) 
+                {
+                answer = 1;
+            }
+
+            return answer;
         }
     }
 }

@@ -151,38 +151,43 @@ namespace Data_Interface
 
         public void BestCourseValueToImprove(List<CourseDiffrence> allCourseDiffrences)
         {
+            HelpShimonAlgorit(allCourseDiffrences);
+        }
+
+        private void HelpShimonAlgorit(List<CourseDiffrence> allCourseDiffrences)
+        {
             const string notAvilable = "Not avilable";
             string toLabelBest1 = notAvilable, toLabelBest2 = notAvilable;
 
             if (allCourseDiffrences.Count > 1)
             {
-                CourseDiffrence max1, max2;
+                /////////////////////////////////////// start was here
 
-                max1 = allCourseDiffrences[0];
-                // max2 =  new CourseDiffrence("n/a" , 0f) ;//allCourseDiffrences[1];
-                max2 = allCourseDiffrences[1];
+                //CourseDiffrence max1, max2;
 
-                //if (max1 < max2)
+                //max1 = allCourseDiffrences[0];
+                //max2 = allCourseDiffrences[1];
+
+                //foreach (CourseDiffrence item in allCourseDiffrences.Skip(1))
                 //{
-                //    max2 = max1;
-                //    max1 = allCourseDiffrences[0];
+                //    if (max1 < item)
+                //    {
+                //        max2 = max1;
+                //        max1 = item;
+                //    }
                 //}
 
-                foreach (CourseDiffrence item in allCourseDiffrences.Skip(1))
-                {
-                    if (max1 < item)
-                    {
-                        max2 = max1;
-                        max1 = item;
-                    }
-                }
+                //toLabelBest1 = max1.CourseName;
+                //toLabelBest2 = max2.CourseName;
 
-
-                toLabelBest1 = max1.CourseName;
-                toLabelBest2 = max2.CourseName;
-
+                //////////////////////////////////////////// end here was
                 // Try The 2 Bests Algorit Tomorrow. conver to c# and do it good for my prog.
                 // maybe to open a class for this algorit and beaiver.
+
+                allCourseDiffrences.Sort();
+
+                toLabelBest1 = allCourseDiffrences[0].CourseName;
+                toLabelBest2 = allCourseDiffrences[1].CourseName;
 
             }
             else if (allCourseDiffrences.Count == 1)
@@ -192,7 +197,6 @@ namespace Data_Interface
 
             labelBest.Text = toLabelBest1;
             labelSecoundBest.Text = toLabelBest2;
-
         }
     }
 }
