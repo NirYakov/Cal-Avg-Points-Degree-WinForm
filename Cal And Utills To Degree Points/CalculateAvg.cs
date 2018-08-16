@@ -48,17 +48,15 @@ namespace Logic_And_Settings
 
         public CalculateAvg AddMarkAndPoints(string i_MarkString, string i_PointsString)
         {
-            parseTwoNumbers(i_MarkString, out float mark, i_PointsString, out float points);
-            m_MarkTotal += mark * points ;
-            m_PointsTotal += points;
+            parseTwoNumbers(i_MarkString, out float mark, i_PointsString, out float points);            
+            AddMarkAndPoints(mark, points);
             return this;
         }
 
         public void SubstractMarkAndPoints(string i_MarkString, string i_PointsString)
         {           
             parseTwoNumbers(i_MarkString, out float mark, i_PointsString, out float points);
-            m_MarkTotal -= mark * points;
-            m_PointsTotal -= points;          
+            AddMarkAndPoints(mark, (points * -1f));
         }
 
         public override string ToString()
@@ -90,6 +88,5 @@ namespace Logic_And_Settings
 
             return differnceValue;
         }
-
     }
 }

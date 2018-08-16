@@ -33,10 +33,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxCourseName = new System.Windows.Forms.TextBox();
+            this.textBoxMark = new System.Windows.Forms.TextBox();
+            this.textBoxPoints = new System.Windows.Forms.TextBox();
+            this.textBoxYear = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -97,37 +97,41 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "Semester";
             // 
-            // textBox1
+            // textBoxCourseName
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(293, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(261, 44);
-            this.textBox1.TabIndex = 1;
+            this.textBoxCourseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCourseName.Location = new System.Drawing.Point(293, 30);
+            this.textBoxCourseName.Name = "textBoxCourseName";
+            this.textBoxCourseName.Size = new System.Drawing.Size(261, 44);
+            this.textBoxCourseName.TabIndex = 1;
+            this.textBoxCourseName.Leave += new System.EventHandler(this.textBoxCourseName_Leave);
             // 
-            // textBox2
+            // textBoxMark
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(293, 84);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(135, 44);
-            this.textBox2.TabIndex = 6;
+            this.textBoxMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxMark.Location = new System.Drawing.Point(293, 84);
+            this.textBoxMark.Name = "textBoxMark";
+            this.textBoxMark.Size = new System.Drawing.Size(135, 44);
+            this.textBoxMark.TabIndex = 6;
+            this.textBoxMark.Leave += new System.EventHandler(this.textBoxMark_Leave);
             // 
-            // textBox3
+            // textBoxPoints
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(293, 139);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(135, 44);
-            this.textBox3.TabIndex = 11;
+            this.textBoxPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPoints.Location = new System.Drawing.Point(293, 139);
+            this.textBoxPoints.Name = "textBoxPoints";
+            this.textBoxPoints.Size = new System.Drawing.Size(135, 44);
+            this.textBoxPoints.TabIndex = 11;
+            this.textBoxPoints.Leave += new System.EventHandler(this.textBoxPoints_Leave);
             // 
-            // textBox4
+            // textBoxYear
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(293, 194);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(135, 44);
-            this.textBox4.TabIndex = 16;
+            this.textBoxYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxYear.Location = new System.Drawing.Point(293, 194);
+            this.textBoxYear.Name = "textBoxYear";
+            this.textBoxYear.Size = new System.Drawing.Size(135, 44);
+            this.textBoxYear.TabIndex = 16;
+            this.textBoxYear.Leave += new System.EventHandler(this.textBoxYear_Leave);
             // 
             // button1
             // 
@@ -221,10 +225,10 @@
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxYear);
+            this.Controls.Add(this.textBoxPoints);
+            this.Controls.Add(this.textBoxMark);
+            this.Controls.Add(this.textBoxCourseName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -247,10 +251,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxCourseName;
+        private System.Windows.Forms.TextBox textBoxMark;
+        private System.Windows.Forms.TextBox textBoxPoints;
+        private System.Windows.Forms.TextBox textBoxYear;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;

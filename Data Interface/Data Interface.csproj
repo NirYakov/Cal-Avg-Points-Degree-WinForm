@@ -52,6 +52,12 @@
     <Compile Include="FormChangeMark.Designer.cs">
       <DependentUpon>FormChangeMark.cs</DependentUpon>
     </Compile>
+    <Compile Include="IndicatorNameTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IndicatorNameTextBox.Designer.cs">
+      <DependentUpon>IndicatorNameTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpenningForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="UtillsColors.cs" />
     <EmbeddedResource Include="FormChangeMark.resx">
       <DependentUpon>FormChangeMark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndicatorNameTextBox.resx">
+      <DependentUpon>IndicatorNameTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OpenningForm.resx">
       <DependentUpon>OpenningForm.cs</DependentUpon>

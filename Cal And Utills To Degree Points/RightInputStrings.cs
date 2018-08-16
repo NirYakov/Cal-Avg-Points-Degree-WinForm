@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cal_And_Utills_To_Degree_Points
+namespace Logic_And_Settings
 {
     public class RightInputStrings
     {
-
         public bool CourseName(string i_CourseNameInput)
         {
             return true;
@@ -39,15 +38,7 @@ namespace Cal_And_Utills_To_Degree_Points
 
             return isRightNumberBetween0To12;
         }
-
-        public void Haaha <T> (T lol) where T : struct , IFormattable , IConvertible
-
-        {
-            bool obj = T.TryPrase("5.5", out T ok);
-
-
-        }
-                
+ 
         public bool Year(string i_Year)
         {
             return true;
