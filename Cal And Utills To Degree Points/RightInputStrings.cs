@@ -31,24 +31,23 @@ namespace Cal_And_Utills_To_Degree_Points
         {
             const float minValue = 0, maxValue = 12; 
             bool isRightNumberBetween0To12 = false;
-            
-            
+
+            if (float.TryParse(i_Points, out float inputNumber) && inputNumber >= minValue && inputNumber <= maxValue)
+            {
+                isRightNumberBetween0To12 = true;
+            }
 
             return isRightNumberBetween0To12;
         }
 
-        public void Amm<T>(string i_InputString,T varr, T minValue , T maxValue) where T : struct
+        public void Haaha <T> (T lol) where T : struct , IFormattable , IConvertible
+
         {
-            bool answer = false;
+            bool obj = T.TryPrase("5.5", out T ok);
 
-            if (T.TryParse(i_InputString, out T inputNumber) && inputNumber >= minValue && inputNumber <= maxValue)
-            {
-                answer = true;
-            }
 
-            return answer;
         }
-
+                
         public bool Year(string i_Year)
         {
             return true;
