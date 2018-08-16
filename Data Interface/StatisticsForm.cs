@@ -36,7 +36,9 @@ namespace Data_Interface
 
         public void LoadData(Dictionary<string, CalculateAvg> yearsAvg)
         {
-            avgsListView.Items.Clear();
+            avgsListView.Items.Clear();               
+
+            numericUpDown2.Value = 0.5m;
 
             foreach (KeyValuePair<string, CalculateAvg> yearAvg in yearsAvg)
             {
@@ -116,6 +118,7 @@ namespace Data_Interface
             float points = Convert.ToSingle(numericUpDown2.Value);
             float markNeeded = CalAverageStats.ReachAvrg(mark, points);
 
+
             if (markNeeded > k_MaxMark)
             {
                 labelFreePointsChoose.ForeColor = Color.Red;
@@ -127,6 +130,8 @@ namespace Data_Interface
 
             labelFreePointsChoose.Text = string.Format("{0:0}", markNeeded);
         }
+
+        // labelFreePointsChoose
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -147,7 +152,7 @@ namespace Data_Interface
             ShowDialog();
         }
 
-        // Do the best marks and more in the stasitic and maybe the secound also .
+        
 
         public void BestCourseValueToImprove(List<CourseDiffrence> allCourseDiffrences)
         {

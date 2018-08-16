@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculateAvg.cs" />
+    <Compile Include="CourseDiffrence.cs" />
     <Compile Include="RightInputStrings.cs" />
     <Compile Include="UtillsColors.cs" />
   </ItemGroup>

@@ -10,12 +10,12 @@ namespace Logic_And_Settings
     {
         public bool CourseName(string i_CourseNameInput)
         {
-            return true;
+            return !string.IsNullOrEmpty(i_CourseNameInput);
         }
 
         public bool Mark(string i_Mark)
         {
-            const float minValue = 0, maxValue = 12;
+            const byte minValue = 0, maxValue = 100;
             bool isRightNumberBetween0To100 = false;
 
             if (byte.TryParse(i_Mark, out byte inputNumber) && inputNumber >= minValue && inputNumber <= maxValue)
@@ -41,7 +41,7 @@ namespace Logic_And_Settings
  
         public bool Year(string i_Year)
         {
-            return true;
+            return !string.IsNullOrEmpty(i_Year);
         }
     }
 }

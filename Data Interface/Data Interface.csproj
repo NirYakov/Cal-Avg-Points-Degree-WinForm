@@ -78,7 +78,6 @@
     <Compile Include="StatisticsForm.Designer.cs">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UtillsColors.cs" />
     <EmbeddedResource Include="FormChangeMark.resx">
       <DependentUpon>FormChangeMark.cs</DependentUpon>
     </EmbeddedResource>

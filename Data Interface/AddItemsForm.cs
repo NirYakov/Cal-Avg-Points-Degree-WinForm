@@ -16,10 +16,9 @@ namespace Data_Interface
         public event Action<string[]> AddCurse;
         private static AddItemsForm s_Instance = null;
         private static readonly RightInputStrings sr_CheckInput = null;
+        private bool m_IsRightCourseName = false, m_IsRightMark = false, m_IsRightPoints = false, m_IsRightYear = false;
 
         private delegate bool currentToActive(string i_InputString);
-
-        private event currentToActive action;
 
         private AddItemsForm()
         {
@@ -49,16 +48,10 @@ namespace Data_Interface
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private string semesterString
         {
-            if (textBoxCourseName.Text != "" || textBoxMark.Text != "" ||
-                textBoxPoints.Text != "" || textBoxYear.Text != "")
+            get
             {
-                string[] newData = new string[5];
-                newData[(int)eSubItem.CourseName] = textBoxCourseName.Text;
-                newData[(int)eSubItem.Mark] = textBoxMark.Text;
-                newData[(int)eSubItem.Points] = textBoxPoints.Text;
-                newData[(int)eSubItem.Year] = textBoxYear.Text;
                 string semesterStr;
                 if (radioButton1.Checked == true)
                 {
@@ -73,10 +66,27 @@ namespace Data_Interface
                     semesterStr = radioButton3.Text;
                 }
 
-                newData[(int)eSubItem.Semseter] = semesterStr;
+                return semesterStr;
+            }
+        }
 
-                textBoxCourseName.Text = textBoxMark.Text = textBoxPoints.Text = textBoxYear.Text = string.Empty;
+        private string[] dataPackegeToArry()
+        {
+            string[] newData = new string[5];
+            newData[(int)eSubItem.CourseName] = textBoxCourseName.Text;
+            newData[(int)eSubItem.Mark] = textBoxMark.Text;
+            newData[(int)eSubItem.Points] = textBoxPoints.Text;
+            newData[(int)eSubItem.Year] = textBoxYear.Text;
+            newData[(int)eSubItem.Semseter] = semesterString;
+            return newData;
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (m_IsRightCourseName && m_IsRightMark && m_IsRightPoints && m_IsRightYear)
+            {
+                string[] newData = dataPackegeToArry();
+                clearAllTextBoxes();
                 OnAddCurse(newData);
             }
             else
@@ -89,45 +99,45 @@ text in the text boxes");
 
         private void textBoxCourseName_Leave(object sender, EventArgs e)
         {
-            action += sr_CheckInput.CourseName; // sr_CheckInput.CourseName;
-            helpToAct(sender, panelWarnningName);
-            action -= sr_CheckInput.CourseName;
-            // isRightInput
+            m_IsRightCourseName = checkAndColorIfRightInput(sender, sr_CheckInput.CourseName, panelWarnningName);
         }
 
         private void textBoxMark_Leave(object sender, EventArgs e)
         {
-            action += sr_CheckInput.Mark;
-            helpToAct(sender, panelWarnningMark);
-            action -= sr_CheckInput.Mark;
+            m_IsRightMark = checkAndColorIfRightInput(sender, sr_CheckInput.Mark, panelWarnningMark);
         }
 
         private void textBoxPoints_Leave(object sender, EventArgs e)
         {
-            action += sr_CheckInput.Points;
-            helpToAct(sender, panelWarnningPoints);
-            action -= sr_CheckInput.Points;
+            m_IsRightPoints = checkAndColorIfRightInput(sender, sr_CheckInput.Points, panelWarnningPoints);
         }
 
         private void textBoxYear_Leave(object sender, EventArgs e)
         {
-            action += sr_CheckInput.Year;
-            helpToAct(sender, panelWarnningYear);
-            action -= sr_CheckInput.Year;
+            m_IsRightYear = checkAndColorIfRightInput(sender, sr_CheckInput.Year, panelWarnningYear);
         }
 
-        private bool helpToAct(object sender, Panel i_Panel)
+        private void AddItemsForm_Deactivate(object sender, EventArgs e)
         {
-            TextBox textBox = sender as TextBox;            
+            clearAllTextBoxes();
+            radioButton1.Checked = true;
+        }
+
+        private void clearAllTextBoxes()
+        {
+            textBoxCourseName.Text = textBoxMark.Text = textBoxPoints.Text = textBoxYear.Text = string.Empty;
+            panelWarnningName.BackColor = panelWarnningMark.BackColor =
+                panelWarnningPoints.BackColor = panelWarnningYear.BackColor = Color.Transparent;
+        }
+
+        private bool checkAndColorIfRightInput(object sender, currentToActive i_Del_ActiveChecking, Panel i_Panel)
+        {
+            TextBox textBox = sender as TextBox;
             bool isRightInput = false;
 
             if (textBox != null)
             {
-                if (action != null)
-                {
-                    isRightInput = action(textBox.Text);
-
-                }
+                isRightInput = i_Del_ActiveChecking(textBox.Text);
 
                 if (isRightInput)
                 {

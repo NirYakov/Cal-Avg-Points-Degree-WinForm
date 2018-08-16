@@ -55,7 +55,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(215, 37);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Course Name";
+            this.label1.Text = "&Course Name";
             // 
             // label2
             // 
@@ -64,8 +64,8 @@
             this.label2.Location = new System.Drawing.Point(55, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 37);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Mark";
+            this.label2.TabIndex = 10;
+            this.label2.Text = "&Mark";
             // 
             // label3
             // 
@@ -74,8 +74,8 @@
             this.label3.Location = new System.Drawing.Point(55, 143);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 37);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Points";
+            this.label3.TabIndex = 20;
+            this.label3.Text = "&Points";
             // 
             // label4
             // 
@@ -84,8 +84,8 @@
             this.label4.Location = new System.Drawing.Point(55, 198);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 37);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Year";
+            this.label4.TabIndex = 30;
+            this.label4.Text = "&Year";
             // 
             // label5
             // 
@@ -94,8 +94,8 @@
             this.label5.Location = new System.Drawing.Point(55, 253);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(152, 37);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Semester";
+            this.label5.TabIndex = 40;
+            this.label5.Text = "&Semester";
             // 
             // textBoxCourseName
             // 
@@ -113,7 +113,7 @@
             this.textBoxMark.Location = new System.Drawing.Point(293, 84);
             this.textBoxMark.Name = "textBoxMark";
             this.textBoxMark.Size = new System.Drawing.Size(135, 44);
-            this.textBoxMark.TabIndex = 6;
+            this.textBoxMark.TabIndex = 11;
             this.textBoxMark.Enter += new System.EventHandler(this.resetColorToBlackText);
             this.textBoxMark.Leave += new System.EventHandler(this.textBoxMark_Leave);
             // 
@@ -123,7 +123,7 @@
             this.textBoxPoints.Location = new System.Drawing.Point(293, 139);
             this.textBoxPoints.Name = "textBoxPoints";
             this.textBoxPoints.Size = new System.Drawing.Size(135, 44);
-            this.textBoxPoints.TabIndex = 11;
+            this.textBoxPoints.TabIndex = 21;
             this.textBoxPoints.Enter += new System.EventHandler(this.resetColorToBlackText);
             this.textBoxPoints.Leave += new System.EventHandler(this.textBoxPoints_Leave);
             // 
@@ -133,7 +133,7 @@
             this.textBoxYear.Location = new System.Drawing.Point(293, 194);
             this.textBoxYear.Name = "textBoxYear";
             this.textBoxYear.Size = new System.Drawing.Size(135, 44);
-            this.textBoxYear.TabIndex = 16;
+            this.textBoxYear.TabIndex = 31;
             this.textBoxYear.Enter += new System.EventHandler(this.resetColorToBlackText);
             this.textBoxYear.Leave += new System.EventHandler(this.textBoxYear_Leave);
             // 
@@ -143,8 +143,8 @@
             this.button1.Location = new System.Drawing.Point(62, 323);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 53);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Add";
+            this.button1.TabIndex = 50;
+            this.button1.Text = "&Add";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -156,7 +156,7 @@
             this.radioButton1.Location = new System.Drawing.Point(293, 251);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(70, 41);
-            this.radioButton1.TabIndex = 21;
+            this.radioButton1.TabIndex = 41;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "A";
             this.radioButton1.UseVisualStyleBackColor = true;
@@ -168,7 +168,7 @@
             this.radioButton2.Location = new System.Drawing.Point(383, 251);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(69, 41);
-            this.radioButton2.TabIndex = 22;
+            this.radioButton2.TabIndex = 42;
             this.radioButton2.Text = "B";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
@@ -179,7 +179,7 @@
             this.radioButton3.Location = new System.Drawing.Point(472, 251);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(71, 41);
-            this.radioButton3.TabIndex = 23;
+            this.radioButton3.TabIndex = 43;
             this.radioButton3.Text = "C";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
@@ -242,7 +242,8 @@
             this.MinimumSize = new System.Drawing.Size(525, 445);
             this.Name = "AddItemsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form3";
+            this.Text = "Add Courses";
+            this.Deactivate += new System.EventHandler(this.AddItemsForm_Deactivate);
             this.ResumeLayout(false);
             this.PerformLayout();
 
