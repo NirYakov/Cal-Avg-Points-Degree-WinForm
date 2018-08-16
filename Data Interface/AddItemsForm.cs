@@ -14,8 +14,7 @@ namespace Data_Interface
     {       
         public event Action<string[]> AddCurse;
         private static AddItemsForm s_Instance = null;
-
-
+        
         private AddItemsForm()
         {
             InitializeComponent();

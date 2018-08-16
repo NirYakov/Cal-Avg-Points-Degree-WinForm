@@ -39,9 +39,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculateAvg.cs" />
+    <Compile Include="RightInputStrings.cs" />
+    <Compile Include="UtillsColors.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

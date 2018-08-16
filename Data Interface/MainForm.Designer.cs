@@ -38,12 +38,12 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.messageHiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeMarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showPotensialValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewButton = new System.Windows.Forms.Button();
             this.avrgMarkLabel = new System.Windows.Forms.Label();
             this.markLabel = new System.Windows.Forms.Label();
             this.statisticsButton = new System.Windows.Forms.Button();
             this.infoButton = new System.Windows.Forms.Button();
-            this.showPotensialValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,12 +59,13 @@
             this.columnHeader4,
             this.columnHeader5});
             this.dataListView.ContextMenuStrip = this.contextMenuStrip1;
+            this.dataListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataListView.FullRowSelect = true;
             this.dataListView.GridLines = true;
             this.dataListView.Location = new System.Drawing.Point(28, 172);
             this.dataListView.MultiSelect = false;
             this.dataListView.Name = "dataListView";
-            this.dataListView.Size = new System.Drawing.Size(721, 791);
+            this.dataListView.Size = new System.Drawing.Size(994, 770);
             this.dataListView.TabIndex = 0;
             this.dataListView.UseCompatibleStateImageBehavior = false;
             this.dataListView.View = System.Windows.Forms.View.Details;
@@ -72,7 +73,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Course Name";
-            this.columnHeader1.Width = 120;
+            this.columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
@@ -85,12 +86,12 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "Year";
-            this.columnHeader4.Width = 50;
+            this.columnHeader4.Width = 70;
             // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "Semester";
-            this.columnHeader5.Width = 66;
+            this.columnHeader5.Width = 85;
             // 
             // contextMenuStrip1
             // 
@@ -105,66 +106,16 @@
             // messageHiToolStripMenuItem
             // 
             this.messageHiToolStripMenuItem.Name = "messageHiToolStripMenuItem";
-            this.messageHiToolStripMenuItem.Size = new System.Drawing.Size(300, 36);
+            this.messageHiToolStripMenuItem.Size = new System.Drawing.Size(315, 36);
             this.messageHiToolStripMenuItem.Text = "Remove course";
             this.messageHiToolStripMenuItem.Click += new System.EventHandler(this.removeCourseToolStripMenuItem_Click);
             // 
             // changeMarkToolStripMenuItem
             // 
             this.changeMarkToolStripMenuItem.Name = "changeMarkToolStripMenuItem";
-            this.changeMarkToolStripMenuItem.Size = new System.Drawing.Size(300, 36);
+            this.changeMarkToolStripMenuItem.Size = new System.Drawing.Size(315, 36);
             this.changeMarkToolStripMenuItem.Text = "Change mark";
             this.changeMarkToolStripMenuItem.Click += new System.EventHandler(this.changeMarkToolStripMenuItem_Click);
-            // 
-            // addNewButton
-            // 
-            this.addNewButton.Location = new System.Drawing.Point(591, 65);
-            this.addNewButton.Name = "addNewButton";
-            this.addNewButton.Size = new System.Drawing.Size(129, 57);
-            this.addNewButton.TabIndex = 1;
-            this.addNewButton.Text = "Add New";
-            this.addNewButton.UseVisualStyleBackColor = true;
-            this.addNewButton.Click += new System.EventHandler(this.addNewButton_Click);
-            // 
-            // avrgMarkLabel
-            // 
-            this.avrgMarkLabel.AutoSize = true;
-            this.avrgMarkLabel.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avrgMarkLabel.Location = new System.Drawing.Point(21, 51);
-            this.avrgMarkLabel.Name = "avrgMarkLabel";
-            this.avrgMarkLabel.Size = new System.Drawing.Size(250, 38);
-            this.avrgMarkLabel.TabIndex = 3;
-            this.avrgMarkLabel.Text = "Average mark  :";
-            // 
-            // markLabel
-            // 
-            this.markLabel.AutoSize = true;
-            this.markLabel.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.markLabel.Location = new System.Drawing.Point(277, 51);
-            this.markLabel.Name = "markLabel";
-            this.markLabel.Size = new System.Drawing.Size(98, 38);
-            this.markLabel.TabIndex = 4;
-            this.markLabel.Text = "00.00";
-            // 
-            // statisticsButton
-            // 
-            this.statisticsButton.Location = new System.Drawing.Point(446, 65);
-            this.statisticsButton.Name = "statisticsButton";
-            this.statisticsButton.Size = new System.Drawing.Size(129, 57);
-            this.statisticsButton.TabIndex = 5;
-            this.statisticsButton.Text = "Statistics";
-            this.statisticsButton.UseVisualStyleBackColor = true;
-            this.statisticsButton.Click += new System.EventHandler(this.statisticsButton_Click);
-            // 
-            // infoButton
-            // 
-            this.infoButton.Location = new System.Drawing.Point(34, 111);
-            this.infoButton.Name = "infoButton";
-            this.infoButton.Size = new System.Drawing.Size(104, 38);
-            this.infoButton.TabIndex = 6;
-            this.infoButton.Text = "Info";
-            this.infoButton.UseVisualStyleBackColor = true;
-            this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
             // 
             // showPotensialValueToolStripMenuItem
             // 
@@ -174,18 +125,71 @@
             this.showPotensialValueToolStripMenuItem.Text = "Show Potensial Value";
             this.showPotensialValueToolStripMenuItem.Click += new System.EventHandler(this.showPotensialValueToolStripMenuItem_Click);
             // 
+            // addNewButton
+            // 
+            this.addNewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addNewButton.Location = new System.Drawing.Point(821, 75);
+            this.addNewButton.Name = "addNewButton";
+            this.addNewButton.Size = new System.Drawing.Size(176, 68);
+            this.addNewButton.TabIndex = 1;
+            this.addNewButton.Text = "Add New";
+            this.addNewButton.UseVisualStyleBackColor = true;
+            this.addNewButton.Click += new System.EventHandler(this.addNewButton_Click);
+            // 
+            // avrgMarkLabel
+            // 
+            this.avrgMarkLabel.AutoSize = true;
+            this.avrgMarkLabel.Font = new System.Drawing.Font("Cooper Black", 13.875F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avrgMarkLabel.Location = new System.Drawing.Point(21, 31);
+            this.avrgMarkLabel.Name = "avrgMarkLabel";
+            this.avrgMarkLabel.Size = new System.Drawing.Size(316, 42);
+            this.avrgMarkLabel.TabIndex = 3;
+            this.avrgMarkLabel.Text = "Average mark  :";
+            // 
+            // markLabel
+            // 
+            this.markLabel.AutoSize = true;
+            this.markLabel.Font = new System.Drawing.Font("Cooper Black", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.markLabel.Location = new System.Drawing.Point(347, 31);
+            this.markLabel.Name = "markLabel";
+            this.markLabel.Size = new System.Drawing.Size(117, 42);
+            this.markLabel.TabIndex = 4;
+            this.markLabel.Text = "00.00";
+            // 
+            // statisticsButton
+            // 
+            this.statisticsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statisticsButton.Location = new System.Drawing.Point(604, 75);
+            this.statisticsButton.Name = "statisticsButton";
+            this.statisticsButton.Size = new System.Drawing.Size(181, 68);
+            this.statisticsButton.TabIndex = 5;
+            this.statisticsButton.Text = "Statistics";
+            this.statisticsButton.UseVisualStyleBackColor = true;
+            this.statisticsButton.Click += new System.EventHandler(this.statisticsButton_Click);
+            // 
+            // infoButton
+            // 
+            this.infoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infoButton.Location = new System.Drawing.Point(28, 102);
+            this.infoButton.Name = "infoButton";
+            this.infoButton.Size = new System.Drawing.Size(136, 54);
+            this.infoButton.TabIndex = 6;
+            this.infoButton.Text = "Info";
+            this.infoButton.UseVisualStyleBackColor = true;
+            this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 1083);
+            this.ClientSize = new System.Drawing.Size(1049, 1487);
             this.Controls.Add(this.infoButton);
             this.Controls.Add(this.statisticsButton);
             this.Controls.Add(this.markLabel);
             this.Controls.Add(this.avrgMarkLabel);
             this.Controls.Add(this.addNewButton);
             this.Controls.Add(this.dataListView);
-            this.MinimumSize = new System.Drawing.Size(792, 768);
+            this.MinimumSize = new System.Drawing.Size(1075, 1550);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";

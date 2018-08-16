@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cal_Avrg_To_Degree_Points
+namespace Logic_And_Settings
 {
     public struct CalculateAvg
     {

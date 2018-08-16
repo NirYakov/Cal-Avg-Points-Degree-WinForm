@@ -11,7 +11,7 @@ namespace Data_Interface
         private readonly string r_CourseName;
         private readonly float r_DiffrenceNumber;
 
-        public CourseDiffrence(string r_CourseName , float r_DiffrenceNumber)
+        public CourseDiffrence(string r_CourseName, float r_DiffrenceNumber)
         {
             this.r_CourseName = r_CourseName ?? throw new ArgumentNullException(nameof(r_CourseName));
             this.r_DiffrenceNumber = r_DiffrenceNumber;
@@ -20,7 +20,7 @@ namespace Data_Interface
         public float DiffrenceNumber { get { return r_DiffrenceNumber; } }
         public string CourseName { get { return r_CourseName; } }
 
-        public static bool operator >(CourseDiffrence courseDiffrenceLeft , CourseDiffrence courseDiffrenceRight)
+        public static bool operator >(CourseDiffrence courseDiffrenceLeft, CourseDiffrence courseDiffrenceRight)
         {
             return courseDiffrenceLeft.DiffrenceNumber > courseDiffrenceRight.DiffrenceNumber;
         }
@@ -38,8 +38,8 @@ namespace Data_Interface
             {
                 answer = -1;
             }
-            else if (r_DiffrenceNumber < other.r_DiffrenceNumber) 
-                {
+            else if (r_DiffrenceNumber < other.r_DiffrenceNumber)
+            {
                 answer = 1;
             }
 

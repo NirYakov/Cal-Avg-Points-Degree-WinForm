@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Cal_Avrg_To_Degree_Points;
+using Logic_And_Settings;
 
 namespace Data_Interface
 {

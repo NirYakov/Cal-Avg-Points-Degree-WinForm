@@ -57,9 +57,10 @@
             this.avgsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Year,
             this.AverageMark});
+            this.avgsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avgsListView.Location = new System.Drawing.Point(0, 0);
             this.avgsListView.Name = "avgsListView";
-            this.avgsListView.Size = new System.Drawing.Size(274, 401);
+            this.avgsListView.Size = new System.Drawing.Size(402, 502);
             this.avgsListView.TabIndex = 1;
             this.avgsListView.UseCompatibleStateImageBehavior = false;
             this.avgsListView.View = System.Windows.Forms.View.Details;
@@ -67,89 +68,97 @@
             // Year
             // 
             this.Year.Text = "Year";
-            this.Year.Width = 40;
+            this.Year.Width = 70;
             // 
             // AverageMark
             // 
             this.AverageMark.Text = "Average Mark";
-            this.AverageMark.Width = 90;
+            this.AverageMark.Width = 125;
             // 
             // ThreePointsLabel
             // 
             this.ThreePointsLabel.AutoSize = true;
-            this.ThreePointsLabel.Location = new System.Drawing.Point(280, 185);
+            this.ThreePointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ThreePointsLabel.Location = new System.Drawing.Point(421, 185);
             this.ThreePointsLabel.Name = "ThreePointsLabel";
-            this.ThreePointsLabel.Size = new System.Drawing.Size(132, 25);
+            this.ThreePointsLabel.Size = new System.Drawing.Size(195, 37);
             this.ThreePointsLabel.TabIndex = 2;
             this.ThreePointsLabel.Text = "Three points";
             // 
             // fourPointsLabel
             // 
             this.fourPointsLabel.AutoSize = true;
+            this.fourPointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fourPointsLabel.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.fourPointsLabel.Location = new System.Drawing.Point(280, 223);
+            this.fourPointsLabel.Location = new System.Drawing.Point(421, 223);
             this.fourPointsLabel.Name = "fourPointsLabel";
-            this.fourPointsLabel.Size = new System.Drawing.Size(120, 25);
+            this.fourPointsLabel.Size = new System.Drawing.Size(179, 37);
             this.fourPointsLabel.TabIndex = 3;
             this.fourPointsLabel.Text = "Four points";
             // 
             // fivePointsLabel
             // 
             this.fivePointsLabel.AutoSize = true;
-            this.fivePointsLabel.Location = new System.Drawing.Point(280, 261);
+            this.fivePointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fivePointsLabel.Location = new System.Drawing.Point(421, 261);
             this.fivePointsLabel.Name = "fivePointsLabel";
-            this.fivePointsLabel.Size = new System.Drawing.Size(117, 25);
+            this.fivePointsLabel.Size = new System.Drawing.Size(171, 37);
             this.fivePointsLabel.TabIndex = 4;
             this.fivePointsLabel.Text = "Five points";
             // 
             // points3Label
             // 
             this.points3Label.AutoSize = true;
-            this.points3Label.Location = new System.Drawing.Point(462, 185);
+            this.points3Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.points3Label.Location = new System.Drawing.Point(653, 185);
             this.points3Label.Name = "points3Label";
-            this.points3Label.Size = new System.Drawing.Size(36, 25);
+            this.points3Label.Size = new System.Drawing.Size(53, 37);
             this.points3Label.TabIndex = 5;
             this.points3Label.Text = "00";
             // 
             // points4Label
             // 
             this.points4Label.AutoSize = true;
+            this.points4Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.points4Label.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.points4Label.Location = new System.Drawing.Point(462, 223);
+            this.points4Label.Location = new System.Drawing.Point(653, 223);
             this.points4Label.Name = "points4Label";
-            this.points4Label.Size = new System.Drawing.Size(36, 25);
+            this.points4Label.Size = new System.Drawing.Size(53, 37);
             this.points4Label.TabIndex = 6;
             this.points4Label.Text = "00";
             // 
             // points5Label
             // 
             this.points5Label.AutoSize = true;
-            this.points5Label.Location = new System.Drawing.Point(462, 261);
+            this.points5Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.points5Label.Location = new System.Drawing.Point(653, 261);
             this.points5Label.Name = "points5Label";
-            this.points5Label.Size = new System.Drawing.Size(36, 25);
+            this.points5Label.Size = new System.Drawing.Size(53, 37);
             this.points5Label.TabIndex = 7;
             this.points5Label.Text = "00";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(286, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(427, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 25);
+            this.label1.Size = new System.Drawing.Size(313, 37);
             this.label1.TabIndex = 8;
             this.label1.Text = "Mark needed for Avg";
             // 
             // numericUpDown1
             // 
             this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown1.Increment = new decimal(new int[] {
             5,
             0,
             0,
             65536});
-            this.numericUpDown1.Location = new System.Drawing.Point(434, 54);
+            this.numericUpDown1.Location = new System.Drawing.Point(655, 84);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(100, 31);
+            this.numericUpDown1.Size = new System.Drawing.Size(124, 44);
             this.numericUpDown1.TabIndex = 0;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
@@ -161,10 +170,11 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button1.Location = new System.Drawing.Point(513, 135);
+            this.button1.Location = new System.Drawing.Point(780, 148);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(39, 41);
+            this.button1.Size = new System.Drawing.Size(46, 53);
             this.button1.TabIndex = 9;
             this.button1.Text = "?";
             this.button1.UseVisualStyleBackColor = false;
@@ -174,9 +184,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(286, 54);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(427, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 25);
+            this.label2.Size = new System.Drawing.Size(203, 37);
             this.label2.TabIndex = 10;
             this.label2.Text = "Wanted Avrg";
             // 
@@ -184,20 +195,21 @@
             // 
             this.numericUpDown2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.numericUpDown2.DecimalPlaces = 2;
+            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDown2.ForeColor = System.Drawing.Color.White;
             this.numericUpDown2.Increment = new decimal(new int[] {
             5,
             0,
             0,
             65536});
-            this.numericUpDown2.Location = new System.Drawing.Point(291, 365);
+            this.numericUpDown2.Location = new System.Drawing.Point(432, 365);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             12,
             0,
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(100, 31);
+            this.numericUpDown2.Size = new System.Drawing.Size(100, 44);
             this.numericUpDown2.TabIndex = 11;
             this.numericUpDown2.Visible = false;
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
@@ -206,10 +218,11 @@
             // 
             this.labelFreePointsChoose.AutoSize = true;
             this.labelFreePointsChoose.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.labelFreePointsChoose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFreePointsChoose.ForeColor = System.Drawing.Color.White;
-            this.labelFreePointsChoose.Location = new System.Drawing.Point(462, 367);
+            this.labelFreePointsChoose.Location = new System.Drawing.Point(603, 367);
             this.labelFreePointsChoose.Name = "labelFreePointsChoose";
-            this.labelFreePointsChoose.Size = new System.Drawing.Size(36, 25);
+            this.labelFreePointsChoose.Size = new System.Drawing.Size(53, 37);
             this.labelFreePointsChoose.TabIndex = 13;
             this.labelFreePointsChoose.Text = "00";
             this.labelFreePointsChoose.Visible = false;
@@ -218,10 +231,11 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(285, 316);
+            this.checkBox1.Location = new System.Drawing.Point(426, 316);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(208, 29);
+            this.checkBox1.Size = new System.Drawing.Size(290, 41);
             this.checkBox1.TabIndex = 14;
             this.checkBox1.Text = "Free Style Points";
             this.checkBox1.UseVisualStyleBackColor = false;
@@ -230,38 +244,40 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(23, 459);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 538);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(238, 25);
+            this.label3.Size = new System.Drawing.Size(352, 37);
             this.label3.TabIndex = 15;
             this.label3.Text = "Best course to improve:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(23, 505);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 592);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(329, 25);
+            this.label4.Size = new System.Drawing.Size(487, 37);
             this.label4.TabIndex = 16;
             this.label4.Text = "Secound Best course to improve:";
             // 
             // labelBest
             // 
             this.labelBest.AutoSize = true;
-            this.labelBest.Location = new System.Drawing.Point(372, 459);
+            this.labelBest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBest.Location = new System.Drawing.Point(519, 538);
             this.labelBest.Name = "labelBest";
-            this.labelBest.Size = new System.Drawing.Size(125, 25);
+            this.labelBest.Size = new System.Drawing.Size(184, 37);
             this.labelBest.TabIndex = 17;
             this.labelBest.Text = "Not avilable";
             // 
             // labelSecoundBest
             // 
             this.labelSecoundBest.AutoSize = true;
-            this.labelSecoundBest.Location = new System.Drawing.Point(372, 505);
+            this.labelSecoundBest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSecoundBest.Location = new System.Drawing.Point(519, 592);
             this.labelSecoundBest.Name = "labelSecoundBest";
-            this.labelSecoundBest.Size = new System.Drawing.Size(125, 25);
+            this.labelSecoundBest.Size = new System.Drawing.Size(184, 37);
             this.labelSecoundBest.TabIndex = 18;
             this.labelSecoundBest.Text = "Not avilable";
             // 
@@ -269,7 +285,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 551);
+            this.ClientSize = new System.Drawing.Size(838, 651);
             this.Controls.Add(this.labelSecoundBest);
             this.Controls.Add(this.labelBest);
             this.Controls.Add(this.label4);
