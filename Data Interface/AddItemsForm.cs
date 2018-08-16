@@ -17,9 +17,13 @@ namespace Data_Interface
         private static AddItemsForm s_Instance = null;
         private static readonly RightInputStrings sr_CheckInput = null;
 
+        private delegate bool currentToActive(string i_InputString);
+
+        private event currentToActive action;
+
         private AddItemsForm()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
         static AddItemsForm()
@@ -85,22 +89,67 @@ text in the text boxes");
 
         private void textBoxCourseName_Leave(object sender, EventArgs e)
         {
-
+            action += sr_CheckInput.CourseName; // sr_CheckInput.CourseName;
+            helpToAct(sender, panelWarnningName);
+            action -= sr_CheckInput.CourseName;
+            // isRightInput
         }
 
         private void textBoxMark_Leave(object sender, EventArgs e)
         {
-
+            action += sr_CheckInput.Mark;
+            helpToAct(sender, panelWarnningMark);
+            action -= sr_CheckInput.Mark;
         }
 
         private void textBoxPoints_Leave(object sender, EventArgs e)
         {
-
+            action += sr_CheckInput.Points;
+            helpToAct(sender, panelWarnningPoints);
+            action -= sr_CheckInput.Points;
         }
 
         private void textBoxYear_Leave(object sender, EventArgs e)
         {
+            action += sr_CheckInput.Year;
+            helpToAct(sender, panelWarnningYear);
+            action -= sr_CheckInput.Year;
+        }
 
+        private bool helpToAct(object sender, Panel i_Panel)
+        {
+            TextBox textBox = sender as TextBox;            
+            bool isRightInput = false;
+
+            if (textBox != null)
+            {
+                if (action != null)
+                {
+                    isRightInput = action(textBox.Text);
+
+                }
+
+                if (isRightInput)
+                {
+                    i_Panel.BackColor = Color.Green;
+                }
+                else
+                {
+                    i_Panel.BackColor = textBox.ForeColor = Color.Red;
+                }
+            }
+
+            return isRightInput;
+        }
+
+        private void resetColorToBlackText(object sender, EventArgs e)
+        {
+            Control controller = sender as Control;
+
+            if (controller != null)
+            {
+                controller.ForeColor = Color.Black;
+            }
         }
     }
 }

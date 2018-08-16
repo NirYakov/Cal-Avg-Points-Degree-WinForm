@@ -104,6 +104,7 @@
             this.textBoxCourseName.Name = "textBoxCourseName";
             this.textBoxCourseName.Size = new System.Drawing.Size(261, 44);
             this.textBoxCourseName.TabIndex = 1;
+            this.textBoxCourseName.Enter += new System.EventHandler(this.resetColorToBlackText);
             this.textBoxCourseName.Leave += new System.EventHandler(this.textBoxCourseName_Leave);
             // 
             // textBoxMark
@@ -113,6 +114,7 @@
             this.textBoxMark.Name = "textBoxMark";
             this.textBoxMark.Size = new System.Drawing.Size(135, 44);
             this.textBoxMark.TabIndex = 6;
+            this.textBoxMark.Enter += new System.EventHandler(this.resetColorToBlackText);
             this.textBoxMark.Leave += new System.EventHandler(this.textBoxMark_Leave);
             // 
             // textBoxPoints
@@ -122,6 +124,7 @@
             this.textBoxPoints.Name = "textBoxPoints";
             this.textBoxPoints.Size = new System.Drawing.Size(135, 44);
             this.textBoxPoints.TabIndex = 11;
+            this.textBoxPoints.Enter += new System.EventHandler(this.resetColorToBlackText);
             this.textBoxPoints.Leave += new System.EventHandler(this.textBoxPoints_Leave);
             // 
             // textBoxYear
@@ -131,6 +134,7 @@
             this.textBoxYear.Name = "textBoxYear";
             this.textBoxYear.Size = new System.Drawing.Size(135, 44);
             this.textBoxYear.TabIndex = 16;
+            this.textBoxYear.Enter += new System.EventHandler(this.resetColorToBlackText);
             this.textBoxYear.Leave += new System.EventHandler(this.textBoxYear_Leave);
             // 
             // button1
