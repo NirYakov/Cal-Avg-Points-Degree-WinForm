@@ -23,6 +23,7 @@ namespace FormsActive
             r_UserFileName = i_UserFileName;
 
             loadDataToListViewFromFile();
+
         }
 
         public void AddWithEvent(string[] i_ToAdd)

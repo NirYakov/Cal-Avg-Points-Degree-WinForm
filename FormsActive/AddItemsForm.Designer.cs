@@ -36,7 +36,6 @@
             this.textBoxCourseName = new System.Windows.Forms.TextBox();
             this.textBoxMark = new System.Windows.Forms.TextBox();
             this.textBoxPoints = new System.Windows.Forms.TextBox();
-            this.textBoxYear = new System.Windows.Forms.TextBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -46,6 +45,7 @@
             this.panelWarnningPoints = new System.Windows.Forms.Panel();
             this.panelWarnningYear = new System.Windows.Forms.Panel();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.comboBoxYears = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -127,16 +127,6 @@
             this.textBoxPoints.TabIndex = 21;
             this.textBoxPoints.Enter += new System.EventHandler(this.resetColorToBlackText);
             this.textBoxPoints.Leave += new System.EventHandler(this.textBoxPoints_Leave);
-            // 
-            // textBoxYear
-            // 
-            this.textBoxYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxYear.Location = new System.Drawing.Point(293, 194);
-            this.textBoxYear.Name = "textBoxYear";
-            this.textBoxYear.Size = new System.Drawing.Size(135, 44);
-            this.textBoxYear.TabIndex = 31;
-            this.textBoxYear.Enter += new System.EventHandler(this.resetColorToBlackText);
-            this.textBoxYear.Leave += new System.EventHandler(this.textBoxYear_Leave);
             // 
             // buttonAdd
             // 
@@ -220,18 +210,42 @@
             // buttonExit
             // 
             this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExit.Location = new System.Drawing.Point(260, 323);
+            this.buttonExit.Location = new System.Drawing.Point(259, 323);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(130, 53);
             this.buttonExit.TabIndex = 51;
             this.buttonExit.Text = "&Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // comboBoxYears
+            // 
+            this.comboBoxYears.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxYears.FormattingEnabled = true;
+            this.comboBoxYears.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comboBoxYears.Location = new System.Drawing.Point(293, 192);
+            this.comboBoxYears.Name = "comboBoxYears";
+            this.comboBoxYears.Size = new System.Drawing.Size(135, 45);
+            this.comboBoxYears.TabIndex = 31;
             // 
             // AddItemsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 404);
+            this.Controls.Add(this.comboBoxYears);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.panelWarnningYear);
             this.Controls.Add(this.panelWarnningPoints);
@@ -241,7 +255,6 @@
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.textBoxYear);
             this.Controls.Add(this.textBoxPoints);
             this.Controls.Add(this.textBoxMark);
             this.Controls.Add(this.textBoxCourseName);
@@ -255,7 +268,7 @@
             this.Name = "AddItemsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add Courses";
-            this.Deactivate += new System.EventHandler(this.AddItemsForm_Deactivate);
+            this.VisibleChanged += new System.EventHandler(this.AddItemsForm_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,7 +284,6 @@
         private System.Windows.Forms.TextBox textBoxCourseName;
         private System.Windows.Forms.TextBox textBoxMark;
         private System.Windows.Forms.TextBox textBoxPoints;
-        private System.Windows.Forms.TextBox textBoxYear;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
@@ -281,5 +293,6 @@
         private System.Windows.Forms.Panel panelWarnningPoints;
         private System.Windows.Forms.Panel panelWarnningYear;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.ComboBox comboBoxYears;
     }
 }

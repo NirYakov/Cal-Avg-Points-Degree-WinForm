@@ -28,7 +28,7 @@ namespace Logic_And_Settings
 
         public bool Points(string i_Points)
         {
-            const float minValue = 0, maxValue = 12; 
+            const float minValue = 0, maxValue = 120; 
             bool isRightNumberBetween0To12 = false;
 
             if (float.TryParse(i_Points, out float inputNumber) && inputNumber >= minValue && inputNumber <= maxValue && inputNumber % 0.5f == 0)

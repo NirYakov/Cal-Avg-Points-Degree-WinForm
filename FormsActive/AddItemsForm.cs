@@ -10,13 +10,14 @@ namespace FormsActive
         public event Action<string[]> AddCurse;
         private static AddItemsForm s_Instance = null;
         private static readonly RightInputStrings sr_CheckInput = null;
-        private bool m_IsRightCourseName = false, m_IsRightMark = false, m_IsRightPoints = false, m_IsRightYear = false;
+        private bool m_IsRightCourseName = false, m_IsRightMark = false, m_IsRightPoints = false;
 
         private delegate bool currentToActive(string i_InputString);
 
         private AddItemsForm()
         {
             InitializeComponent();
+            comboBoxYears.SelectedIndex = 0;
         }
 
         static AddItemsForm()
@@ -70,16 +71,17 @@ namespace FormsActive
             newData[(int)eSubItem.CourseName] = textBoxCourseName.Text;
             newData[(int)eSubItem.Mark] = textBoxMark.Text;
             newData[(int)eSubItem.Points] = textBoxPoints.Text;
-            newData[(int)eSubItem.Year] = textBoxYear.Text;
+            newData[(int)eSubItem.Year] = comboBoxYears.SelectedItem.ToString();
             newData[(int)eSubItem.Semseter] = semesterString;
             return newData;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (m_IsRightCourseName && m_IsRightMark && m_IsRightPoints && m_IsRightYear)
+            bool isComboChosen = comboBoxYears.SelectedIndex > -1;
+            if (m_IsRightCourseName && m_IsRightMark && m_IsRightPoints && isComboChosen)
             {
-                m_IsRightCourseName = m_IsRightMark = m_IsRightPoints = m_IsRightYear = false;
+                m_IsRightCourseName = m_IsRightMark = m_IsRightPoints = false;
                 string[] newData = dataPackegeToArry();
                 clearAllTextBoxes();
                 OnAddCurse(newData);
@@ -106,25 +108,25 @@ text in the text boxes");
         {
             m_IsRightPoints = checkAndColorIfRightInput(sender, sr_CheckInput.Points, panelWarnningPoints);
         }
-
-        private void textBoxYear_Leave(object sender, EventArgs e)
+               
+        private void clearAllTextBoxes()
         {
-            m_IsRightYear = checkAndColorIfRightInput(sender, sr_CheckInput.Year, panelWarnningYear);
+            comboBoxYears.SelectedIndex = 0;
+            textBoxCourseName.Text = textBoxMark.Text = textBoxPoints.Text = string.Empty;
+            panelWarnningName.BackColor = panelWarnningMark.BackColor =
+                panelWarnningPoints.BackColor = panelWarnningYear.BackColor = Color.Transparent;
         }
 
-        private void AddItemsForm_Deactivate(object sender, EventArgs e)
+        private void AddItemsForm_VisibleChanged(object sender, EventArgs e)
         {
             clearAllTextBoxes();
             radioButton1.Checked = true;
         }
 
-       
-
-        private void clearAllTextBoxes()
+        private void buttonExit_Click(object sender, EventArgs e)
         {
-            textBoxCourseName.Text = textBoxMark.Text = textBoxPoints.Text = textBoxYear.Text = string.Empty;
-            panelWarnningName.BackColor = panelWarnningMark.BackColor =
-                panelWarnningPoints.BackColor = panelWarnningYear.BackColor = Color.Transparent;
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private bool checkAndColorIfRightInput(object sender, currentToActive i_Del_ActiveChecking, Panel i_Panel)

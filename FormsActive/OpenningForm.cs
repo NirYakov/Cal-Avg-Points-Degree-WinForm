@@ -116,9 +116,10 @@ namespace FormsActive
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonExit_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;            
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

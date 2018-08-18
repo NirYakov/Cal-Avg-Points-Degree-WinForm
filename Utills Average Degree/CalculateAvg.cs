@@ -15,17 +15,13 @@ namespace Logic_And_Settings
         {
             get
             {
-                float answer;
+                float answer = 0;
 
                 if (m_PointsTotal > 0)
                 {
                     answer = m_MarkTotal / m_PointsTotal;
                 }
-                else
-                {
-                    answer = 0;
-                }       
-                
+
                 return answer;
             }
         }

@@ -124,7 +124,7 @@
             this.button2.TabIndex = 30;
             this.button2.Text = "Exit";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // label1
             // 
