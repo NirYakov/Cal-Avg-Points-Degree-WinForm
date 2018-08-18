@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Interface", "Data Interface\Data Interface.csproj", "{8F07F70F-7B5A-4E64-862C-9936FF7E2120}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degree Average", "Data Interface\Degree Average.csproj", "{8F07F70F-7B5A-4E64-862C-9936FF7E2120}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cal And Utills To Degree Points", "Cal And Utills To Degree Points\Cal And Utills To Degree Points.csproj", "{76712C41-920C-42A6-B1A6-FD02A75B0F21}"
 EndProject

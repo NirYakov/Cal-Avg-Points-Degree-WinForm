@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using FormsActive;
 
-namespace Data_Interface
+namespace Degree_Average
 {
     static class Program
     {

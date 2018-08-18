@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Data_Interface.Properties
+namespace Degree_Average.Properties
 {
 
 
