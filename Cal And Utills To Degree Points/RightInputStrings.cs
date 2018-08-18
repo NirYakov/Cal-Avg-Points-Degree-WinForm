@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Logic_And_Settings
 {
     public class RightInputStrings
-    {
+    {       
         public bool CourseName(string i_CourseNameInput)
         {
             return !string.IsNullOrEmpty(i_CourseNameInput);

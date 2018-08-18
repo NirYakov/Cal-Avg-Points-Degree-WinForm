@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logic_And_Settings;
 
-namespace Data_Interface
+namespace FormsActive
 {
     public partial class MainForm : Form
     {
@@ -27,7 +22,7 @@ namespace Data_Interface
 
             r_UserFileName = i_UserFileName;
 
-            loadDataToListView();
+            loadDataToListViewFromFile();
         }
 
         public void AddWithEvent(string[] i_ToAdd)
@@ -36,7 +31,7 @@ namespace Data_Interface
             addItemToListView(i_ToAdd);
         }
 
-        private void loadDataToListView()
+        private void loadDataToListViewFromFile()
         {
             const string endFile = ".txt";
             string[] testData = File.ReadAllLines(string.Format(@"UsersData\{0}{1}", r_UserFileName, endFile));
@@ -49,18 +44,25 @@ namespace Data_Interface
 
         private void addItemToListView(string[] i_DataToList)
         {
-            ListViewItem lvi = new ListViewItem(i_DataToList[(int)eSubItem.CourseName]);
-            lvi.SubItems.Add(i_DataToList[(int)eSubItem.Mark]);
-            lvi.SubItems.Add(i_DataToList[(int)eSubItem.Points]);
-            lvi.SubItems.Add(i_DataToList[(int)eSubItem.Year]);
-            lvi.SubItems.Add(i_DataToList[(int)eSubItem.Semseter]);
+            try
+            {
+                ListViewItem lvi = new ListViewItem(i_DataToList[(int)eSubItem.CourseName]);
+                lvi.SubItems.Add(i_DataToList[(int)eSubItem.Mark]);
+                lvi.SubItems.Add(i_DataToList[(int)eSubItem.Points]);
+                lvi.SubItems.Add(i_DataToList[(int)eSubItem.Year]);
+                lvi.SubItems.Add(i_DataToList[(int)eSubItem.Semseter]);
 
-            UtillsColors.RowColor(lvi, dataListView.Items.Count);
+                UtillsColors.RowColor(lvi, dataListView.Items.Count);
 
-            dataListView.Items.Add(lvi);
+                m_CalAvg.AddMarkAndPoints(i_DataToList[(int)eSubItem.Mark], i_DataToList[(int)eSubItem.Points]);
+                updateMarkAverageLabel();
 
-            m_CalAvg.AddMarkAndPoints(i_DataToList[(int)eSubItem.Mark], i_DataToList[(int)eSubItem.Points]);
-            updateMarkAverageLabel();
+                dataListView.Items.Add(lvi);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(string.Format("Error in type please try{0}again after check the '?'",Environment.NewLine));
+            }
         }
 
         private void addNewButton_Click(object sender, EventArgs e)
@@ -135,8 +137,7 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
                     item.SubItems[(int)eSubItem.Mark].Text , item.SubItems[(int)eSubItem.Points].Text);
 
                 allCourseDiffrences.Add(new CourseDiffrence(
-                        item.SubItems[(int)eSubItem.CourseName].Text, diffrenceValue));
-                    
+                        item.SubItems[(int)eSubItem.CourseName].Text, diffrenceValue));                    
             }
 
             return allCourseDiffrences;
@@ -200,9 +201,10 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
 
                 ListViewItem itemToChange = dataListView.SelectedItems[0];
                 string chosenCourseName = itemToChange.SubItems[(int)eSubItem.CourseName].Text;
+                string chosenCourePoints = itemToChange.SubItems[(int)eSubItem.Points].Text;
                 byte markToChange = byte.Parse(itemToChange.SubItems[(int)eSubItem.Mark].Text);
 
-                if (m_FormToChangeTheMark.ShowDialog(chosenCourseName, markToChange) == DialogResult.OK)
+                if (m_FormToChangeTheMark.ShowDialog(chosenCourseName, markToChange, m_CalAvg, chosenCourePoints) == DialogResult.OK)
                 {
                     short totalOffset = (short)(m_FormToChangeTheMark.LastValue - markToChange);
                     itemToChange.SubItems[(int)eSubItem.Mark].Text = m_FormToChangeTheMark.LastValue.ToString();

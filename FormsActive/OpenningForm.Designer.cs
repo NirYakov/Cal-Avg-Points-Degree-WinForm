@@ -1,4 +1,4 @@
-﻿namespace Data_Interface
+﻿namespace FormsActive
 {
     partial class OpenningForm
     {
@@ -30,18 +30,20 @@
         {
             this.newUserTextBox = new System.Windows.Forms.TextBox();
             this.newUserRadioButton = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButtonSavedUser = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.usersComboBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // newUserTextBox
             // 
             this.newUserTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.newUserTextBox.Enabled = false;
             this.newUserTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newUserTextBox.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.newUserTextBox.Location = new System.Drawing.Point(139, 163);
@@ -55,31 +57,32 @@
             // newUserRadioButton
             // 
             this.newUserRadioButton.AutoSize = true;
-            this.newUserRadioButton.Checked = true;
             this.newUserRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newUserRadioButton.Location = new System.Drawing.Point(68, 61);
+            this.newUserRadioButton.Location = new System.Drawing.Point(284, 49);
             this.newUserRadioButton.Name = "newUserRadioButton";
             this.newUserRadioButton.Size = new System.Drawing.Size(183, 41);
             this.newUserRadioButton.TabIndex = 2;
-            this.newUserRadioButton.TabStop = true;
             this.newUserRadioButton.Text = "New user";
             this.newUserRadioButton.UseVisualStyleBackColor = true;
             this.newUserRadioButton.CheckedChanged += new System.EventHandler(this.newUserRadioButton_CheckedChanged);
             // 
-            // radioButton2
+            // radioButtonSavedUser
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(294, 61);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(208, 41);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Saved user";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonSavedUser.AutoSize = true;
+            this.radioButtonSavedUser.Checked = true;
+            this.radioButtonSavedUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonSavedUser.Location = new System.Drawing.Point(47, 49);
+            this.radioButtonSavedUser.Name = "radioButtonSavedUser";
+            this.radioButtonSavedUser.Size = new System.Drawing.Size(208, 41);
+            this.radioButtonSavedUser.TabIndex = 3;
+            this.radioButtonSavedUser.TabStop = true;
+            this.radioButtonSavedUser.Text = "Saved user";
+            this.radioButtonSavedUser.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.newUserRadioButton);
+            this.groupBox1.Controls.Add(this.radioButtonSavedUser);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(22, 12);
             this.groupBox1.Name = "groupBox1";
@@ -92,7 +95,6 @@
             // 
             this.usersComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.usersComboBox.Enabled = false;
             this.usersComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usersComboBox.FormattingEnabled = true;
             this.usersComboBox.Location = new System.Drawing.Point(139, 219);
@@ -142,8 +144,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.usersComboBox);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.newUserRadioButton);
             this.Controls.Add(this.newUserTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -152,6 +152,8 @@
             this.Name = "OpenningForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,7 +162,7 @@
         #endregion
         private System.Windows.Forms.TextBox newUserTextBox;
         private System.Windows.Forms.RadioButton newUserRadioButton;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButtonSavedUser;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox usersComboBox;
         private System.Windows.Forms.Button button1;

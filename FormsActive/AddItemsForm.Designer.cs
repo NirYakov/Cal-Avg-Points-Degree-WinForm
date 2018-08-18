@@ -1,4 +1,4 @@
-﻿namespace Data_Interface
+﻿namespace FormsActive
 {
     partial class AddItemsForm
     {

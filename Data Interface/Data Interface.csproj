@@ -45,51 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CourseDiffrence.cs" />
-    <Compile Include="FormChangeMark.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormChangeMark.Designer.cs">
-      <DependentUpon>FormChangeMark.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OpenningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OpenningForm.Designer.cs">
-      <DependentUpon>OpenningForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddItemsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddItemsForm.Designer.cs">
-      <DependentUpon>AddItemsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatisticsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StatisticsForm.Designer.cs">
-      <DependentUpon>StatisticsForm.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="FormChangeMark.resx">
-      <DependentUpon>FormChangeMark.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OpenningForm.resx">
-      <DependentUpon>OpenningForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AddItemsForm.resx">
-      <DependentUpon>AddItemsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -99,9 +56,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StatisticsForm.resx">
-      <DependentUpon>StatisticsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -116,9 +70,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cal And Utills To Degree Points\Cal And Utills To Degree Points.csproj">
-      <Project>{76712c41-920c-42a6-b1a6-fd02a75b0f21}</Project>
-      <Name>Cal And Utills To Degree Points</Name>
+    <ProjectReference Include="..\FormsActive\FormsActive.csproj">
+      <Project>{d7863e45-44a5-478a-a59a-e3fa470cbb1a}</Project>
+      <Name>FormsActive</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

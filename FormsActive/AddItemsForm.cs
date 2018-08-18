@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logic_And_Settings;
 
-namespace Data_Interface
+namespace FormsActive
 {
     public partial class AddItemsForm : Form
     {
@@ -85,6 +79,7 @@ namespace Data_Interface
         {
             if (m_IsRightCourseName && m_IsRightMark && m_IsRightPoints && m_IsRightYear)
             {
+                m_IsRightCourseName = m_IsRightMark = m_IsRightPoints = m_IsRightYear = false;
                 string[] newData = dataPackegeToArry();
                 clearAllTextBoxes();
                 OnAddCurse(newData);

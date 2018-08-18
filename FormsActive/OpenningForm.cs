@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-//to test
-using System.Diagnostics;
-// end here
-
-namespace Data_Interface
+namespace FormsActive
 {
     public partial class OpenningForm : Form
     {
+        string m_UserName;
+
         public OpenningForm()
         {
             InitializeComponent();
@@ -38,18 +30,25 @@ namespace Data_Interface
 
         public bool IsHaveNewUser() => newUserRadioButton.Checked == true;
 
-        public string NewUser
+        public void UserEnternce()
         {
-            get { return newUserTextBox.Text; }
+            string nameOfUser;
+
+            if (radioButtonSavedUser.Checked)
+            {
+                nameOfUser = usersComboBox.SelectedItem.ToString();
+            }
+            else
+            {
+                nameOfUser = newUserTextBox.Text;
+                FileStream fs = File.OpenWrite(string.Format(@"UsersData\{0}.txt", newUserTextBox.Text));
+                fs.Close();
+            }
+
+            m_UserName = nameOfUser;
         }
 
-        public string ComboChosen
-        {
-            get
-            {
-                return usersComboBox.SelectedItem.ToString();
-            }
-        }
+        public string UserName { get => m_UserName;  }
 
         private void addToUserCombolist()
         {
@@ -58,9 +57,10 @@ namespace Data_Interface
             int startPathLen = currectDataPath.Length + 1;
             foreach (string item in Directory.GetFiles(currectDataPath))
             {
+                const int endingLetterLength = 4;
                 if (item.EndsWith(".txt"))
                 {
-                    int startAndEnd = (item.Length - startPathLen - 4);
+                    int startAndEnd = (item.Length - startPathLen - endingLetterLength);
                     string fileName = item.Substring(startPathLen, startAndEnd);
                     usersComboBox.Items.Add(fileName);
                 }
@@ -93,8 +93,8 @@ namespace Data_Interface
 
             if (toTheNextForm == true)
             {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                DialogResult = DialogResult.OK;
+                Close();
             }
         }
 
@@ -109,7 +109,7 @@ namespace Data_Interface
 
         private void newUserTextBox_Leave(object sender, EventArgs e)
         {
-            if (newUserTextBox.Text == "")
+            if (newUserTextBox.Text == string.Empty)
             {
                 newUserTextBox.Text = "Name";
                 newUserTextBox.ForeColor = Color.Silver;

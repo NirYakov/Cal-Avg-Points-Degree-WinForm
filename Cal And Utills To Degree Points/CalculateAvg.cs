@@ -8,10 +8,11 @@ namespace Logic_And_Settings
 {
     public struct CalculateAvg
     {
-        private float m_MarkTotal ;
+        private float m_MarkTotal;
         private float m_PointsTotal;
 
-        public float AverageTotal {
+        public float AverageTotal
+        {
             get
             {
                 float answer;
@@ -22,10 +23,10 @@ namespace Logic_And_Settings
                 }
                 catch (Exception)
                 {
-                    answer = 0;                    
+                    answer = 0;
                 }
 
-                return answer; 
+                return answer;
             }
         }
 
@@ -33,12 +34,12 @@ namespace Logic_And_Settings
 
         public float PointsTotal { get { return m_PointsTotal; } }
 
-        public float ReachAvrg(float i_WantedMark , float i_GivenPoints)
+        public float ReachAvrg(float i_WantedMark, float i_GivenPoints)
         {
             float totalRightSide = (i_WantedMark * (m_PointsTotal + i_GivenPoints)) - m_MarkTotal;
             float answer = totalRightSide / i_GivenPoints;
             return answer;
-        } 
+        }
 
         public void AddMarkAndPoints(float i_Mark, float i_Points)
         {
@@ -48,21 +49,26 @@ namespace Logic_And_Settings
 
         public CalculateAvg AddMarkAndPoints(string i_MarkString, string i_PointsString)
         {
-            parseTwoNumbers(i_MarkString, out float mark, i_PointsString, out float points);            
+            parseTwoNumbers(i_MarkString, out float mark, i_PointsString, out float points);
             AddMarkAndPoints(mark, points);
             return this;
         }
 
         public void SubstractMarkAndPoints(string i_MarkString, string i_PointsString)
-        {           
+        {
             parseTwoNumbers(i_MarkString, out float mark, i_PointsString, out float points);
-            AddMarkAndPoints(mark, (points * -1f));
+            SubstractMarkAndPoints(mark, points);
+        }
+
+        public void SubstractMarkAndPoints(float i_Mark, float i_Points)
+        {
+            AddMarkAndPoints(i_Mark, (i_Points * -1f));
         }
 
         public override string ToString()
         {
             return string.Format("{0:0.00}", AverageTotal);
-        }        
+        }
 
         public void ChangeMarkAndTotal(string i_MarkString, string i_PointsString)
         {
@@ -73,20 +79,29 @@ namespace Logic_And_Settings
             m_MarkTotal += markOffset * points;
         }
 
-        private static void parseTwoNumbers( string i_MarkString,out float i_Mark ,string i_PointsString ,  out float i_Points)
+        private static void parseTwoNumbers(string i_MarkString, out float i_Mark, string i_PointsString, out float i_Points)
         {
             i_Mark = float.Parse(i_MarkString);
             i_Points = float.Parse(i_PointsString);
         }
 
-        public static float DifferenceValueTo100(string i_MarkString , string i_PointsString)
+        public static float DifferenceValueTo100(string i_MarkString, string i_PointsString)
         {
             const float maxMark = 100f;
-            parseTwoNumbers(i_MarkString, out float mark, i_PointsString , out float points);
+            parseTwoNumbers(i_MarkString, out float mark, i_PointsString, out float points);
             float differenceInMark = maxMark - mark;
             float differnceValue = differenceInMark * points;
 
             return differnceValue;
+        }
+
+        public float ReplaceMark(float i_WantedMark, float i_Mark, float i_Points)
+        {
+            float markDiffrence = i_WantedMark - i_Mark;
+            float diffrenceValue = markDiffrence * i_Points;
+            float markTotal = m_MarkTotal + diffrenceValue;
+            float answerTotalAverage = markTotal / m_PointsTotal;
+            return answerTotalAverage;
         }
     }
 }

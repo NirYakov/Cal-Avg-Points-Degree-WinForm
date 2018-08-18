@@ -1,4 +1,4 @@
-﻿namespace Data_Interface
+﻿namespace FormsActive
 {
     partial class StatisticsForm
     {
@@ -48,6 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.labelBest = new System.Windows.Forms.Label();
             this.labelSecoundBest = new System.Windows.Forms.Label();
+            this.buttonMulitiCourse = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -158,7 +159,7 @@
             65536});
             this.numericUpDown1.Location = new System.Drawing.Point(655, 84);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(124, 44);
+            this.numericUpDown1.Size = new System.Drawing.Size(136, 44);
             this.numericUpDown1.TabIndex = 0;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
@@ -202,14 +203,14 @@
             0,
             0,
             65536});
-            this.numericUpDown2.Location = new System.Drawing.Point(432, 365);
+            this.numericUpDown2.Location = new System.Drawing.Point(432, 368);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             12,
             0,
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(100, 44);
+            this.numericUpDown2.Size = new System.Drawing.Size(122, 44);
             this.numericUpDown2.TabIndex = 11;
             this.numericUpDown2.Visible = false;
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
@@ -220,7 +221,7 @@
             this.labelFreePointsChoose.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.labelFreePointsChoose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFreePointsChoose.ForeColor = System.Drawing.Color.White;
-            this.labelFreePointsChoose.Location = new System.Drawing.Point(603, 367);
+            this.labelFreePointsChoose.Location = new System.Drawing.Point(648, 372);
             this.labelFreePointsChoose.Name = "labelFreePointsChoose";
             this.labelFreePointsChoose.Size = new System.Drawing.Size(53, 37);
             this.labelFreePointsChoose.TabIndex = 13;
@@ -281,11 +282,22 @@
             this.labelSecoundBest.TabIndex = 18;
             this.labelSecoundBest.Text = "Not avilable";
             // 
+            // buttonMulitiCourse
+            // 
+            this.buttonMulitiCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMulitiCourse.Location = new System.Drawing.Point(426, 442);
+            this.buttonMulitiCourse.Name = "buttonMulitiCourse";
+            this.buttonMulitiCourse.Size = new System.Drawing.Size(251, 60);
+            this.buttonMulitiCourse.TabIndex = 19;
+            this.buttonMulitiCourse.Text = "Multi Courses";
+            this.buttonMulitiCourse.UseVisualStyleBackColor = true;
+            // 
             // StatisticsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 651);
+            this.Controls.Add(this.buttonMulitiCourse);
             this.Controls.Add(this.labelSecoundBest);
             this.Controls.Add(this.labelBest);
             this.Controls.Add(this.label4);
@@ -337,5 +349,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelBest;
         private System.Windows.Forms.Label labelSecoundBest;
+        private System.Windows.Forms.Button buttonMulitiCourse;
     }
 }
