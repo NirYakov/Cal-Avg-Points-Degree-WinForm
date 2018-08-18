@@ -33,7 +33,7 @@ namespace FormsActive
         {
             avgsListView.Items.Clear();               
 
-            numericUpDown2.Value = 0.5m;
+           
 
             foreach (KeyValuePair<string, CalculateAvg> yearAvg in yearsAvg)
             {
@@ -48,7 +48,9 @@ namespace FormsActive
 
             float AvrgTotal = CalAverageStats.AverageTotal;
             updateAllMarkPointsData(AvrgTotal);
+                        
             numericUpDown1.Minimum = Convert.ToDecimal(AvrgTotal);
+            numericUpDown2.Value = 2.0m;
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -112,7 +114,6 @@ namespace FormsActive
             float mark = Convert.ToSingle(numericUpDown1.Value);
             float points = Convert.ToSingle(numericUpDown2.Value);
             float markNeeded = CalAverageStats.ReachAvrg(mark, points);
-
 
             if (markNeeded > k_MaxMark)
             {

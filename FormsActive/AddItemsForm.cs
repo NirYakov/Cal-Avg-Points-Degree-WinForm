@@ -75,7 +75,7 @@ namespace FormsActive
             return newData;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (m_IsRightCourseName && m_IsRightMark && m_IsRightPoints && m_IsRightYear)
             {
@@ -117,6 +117,8 @@ text in the text boxes");
             clearAllTextBoxes();
             radioButton1.Checked = true;
         }
+
+       
 
         private void clearAllTextBoxes()
         {

@@ -34,7 +34,7 @@ namespace FormsActive
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Error , please try again.");
+                    MessageBox.Show("Error , please try again later.");
                 }
             }
         }
@@ -46,7 +46,6 @@ namespace FormsActive
                 Directory.CreateDirectory("UsersData");
             }
         }
-
 
     }
 }

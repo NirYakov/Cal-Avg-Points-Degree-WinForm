@@ -31,7 +31,7 @@ namespace Logic_And_Settings
             const float minValue = 0, maxValue = 12; 
             bool isRightNumberBetween0To12 = false;
 
-            if (float.TryParse(i_Points, out float inputNumber) && inputNumber >= minValue && inputNumber <= maxValue)
+            if (float.TryParse(i_Points, out float inputNumber) && inputNumber >= minValue && inputNumber <= maxValue && inputNumber % 0.5f == 0)
             {
                 isRightNumberBetween0To12 = true;
             }

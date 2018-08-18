@@ -122,8 +122,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 52);
             this.button2.TabIndex = 30;
-            this.button2.Text = "Out";
+            this.button2.Text = "Exit";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -151,7 +152,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 390);
             this.Name = "OpenningForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Login";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

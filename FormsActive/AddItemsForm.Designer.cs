@@ -37,7 +37,7 @@
             this.textBoxMark = new System.Windows.Forms.TextBox();
             this.textBoxPoints = new System.Windows.Forms.TextBox();
             this.textBoxYear = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -45,6 +45,7 @@
             this.panelWarnningMark = new System.Windows.Forms.Panel();
             this.panelWarnningPoints = new System.Windows.Forms.Panel();
             this.panelWarnningYear = new System.Windows.Forms.Panel();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -137,16 +138,16 @@
             this.textBoxYear.Enter += new System.EventHandler(this.resetColorToBlackText);
             this.textBoxYear.Leave += new System.EventHandler(this.textBoxYear_Leave);
             // 
-            // button1
+            // buttonAdd
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(62, 323);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 53);
-            this.button1.TabIndex = 50;
-            this.button1.Text = "&Add";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdd.Location = new System.Drawing.Point(62, 323);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(130, 53);
+            this.buttonAdd.TabIndex = 50;
+            this.buttonAdd.Text = "&Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // radioButton1
             // 
@@ -216,11 +217,22 @@
             this.panelWarnningYear.Size = new System.Drawing.Size(15, 40);
             this.panelWarnningYear.TabIndex = 27;
             // 
+            // buttonExit
+            // 
+            this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExit.Location = new System.Drawing.Point(260, 323);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(130, 53);
+            this.buttonExit.TabIndex = 51;
+            this.buttonExit.Text = "&Exit";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            // 
             // AddItemsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 404);
+            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.panelWarnningYear);
             this.Controls.Add(this.panelWarnningPoints);
             this.Controls.Add(this.panelWarnningMark);
@@ -228,7 +240,7 @@
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.textBoxYear);
             this.Controls.Add(this.textBoxPoints);
             this.Controls.Add(this.textBoxMark);
@@ -260,7 +272,7 @@
         private System.Windows.Forms.TextBox textBoxMark;
         private System.Windows.Forms.TextBox textBoxPoints;
         private System.Windows.Forms.TextBox textBoxYear;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
@@ -268,5 +280,6 @@
         private System.Windows.Forms.Panel panelWarnningMark;
         private System.Windows.Forms.Panel panelWarnningPoints;
         private System.Windows.Forms.Panel panelWarnningYear;
+        private System.Windows.Forms.Button buttonExit;
     }
 }

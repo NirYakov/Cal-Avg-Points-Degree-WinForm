@@ -17,15 +17,15 @@ namespace Logic_And_Settings
             {
                 float answer;
 
-                try
+                if (m_PointsTotal > 0)
                 {
                     answer = m_MarkTotal / m_PointsTotal;
                 }
-                catch (Exception)
+                else
                 {
                     answer = 0;
-                }
-
+                }       
+                
                 return answer;
             }
         }
@@ -37,7 +37,16 @@ namespace Logic_And_Settings
         public float ReachAvrg(float i_WantedMark, float i_GivenPoints)
         {
             float totalRightSide = (i_WantedMark * (m_PointsTotal + i_GivenPoints)) - m_MarkTotal;
-            float answer = totalRightSide / i_GivenPoints;
+            float answer;
+            if (i_GivenPoints > 0)
+            {
+                answer = totalRightSide / i_GivenPoints;
+            }
+            else
+            {
+                answer = 0;
+            }
+
             return answer;
         }
 
@@ -67,7 +76,7 @@ namespace Logic_And_Settings
 
         public override string ToString()
         {
-            return string.Format("{0:0.00}", AverageTotal);
+            return string.Format("{0:00.00}", AverageTotal);
         }
 
         public void ChangeMarkAndTotal(string i_MarkString, string i_PointsString)

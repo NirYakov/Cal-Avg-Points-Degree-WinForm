@@ -43,14 +43,16 @@
             this.avrgMarkLabel = new System.Windows.Forms.Label();
             this.markLabel = new System.Windows.Forms.Label();
             this.statisticsButton = new System.Windows.Forms.Button();
-            this.infoButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.labelPoints = new System.Windows.Forms.Label();
+            this.labelTotalPoints = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataListView
             // 
-            this.dataListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dataListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
@@ -128,7 +130,7 @@
             // addNewButton
             // 
             this.addNewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addNewButton.Location = new System.Drawing.Point(821, 75);
+            this.addNewButton.Location = new System.Drawing.Point(846, 75);
             this.addNewButton.Name = "addNewButton";
             this.addNewButton.Size = new System.Drawing.Size(176, 68);
             this.addNewButton.TabIndex = 1;
@@ -159,7 +161,7 @@
             // statisticsButton
             // 
             this.statisticsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statisticsButton.Location = new System.Drawing.Point(604, 75);
+            this.statisticsButton.Location = new System.Drawing.Point(644, 75);
             this.statisticsButton.Name = "statisticsButton";
             this.statisticsButton.Size = new System.Drawing.Size(181, 68);
             this.statisticsButton.TabIndex = 5;
@@ -167,23 +169,46 @@
             this.statisticsButton.UseVisualStyleBackColor = true;
             this.statisticsButton.Click += new System.EventHandler(this.statisticsButton_Click);
             // 
-            // infoButton
+            // button1
             // 
-            this.infoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infoButton.Location = new System.Drawing.Point(28, 102);
-            this.infoButton.Name = "infoButton";
-            this.infoButton.Size = new System.Drawing.Size(136, 54);
-            this.infoButton.TabIndex = 6;
-            this.infoButton.Text = "Info";
-            this.infoButton.UseVisualStyleBackColor = true;
-            this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
+            this.button1.Enabled = false;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(28, 95);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 54);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Settings";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            // 
+            // labelPoints
+            // 
+            this.labelPoints.AutoSize = true;
+            this.labelPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPoints.Location = new System.Drawing.Point(455, 106);
+            this.labelPoints.Name = "labelPoints";
+            this.labelPoints.Size = new System.Drawing.Size(106, 37);
+            this.labelPoints.TabIndex = 10;
+            this.labelPoints.Text = "Points";
+            // 
+            // labelTotalPoints
+            // 
+            this.labelTotalPoints.AutoSize = true;
+            this.labelTotalPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalPoints.Location = new System.Drawing.Point(356, 106);
+            this.labelTotalPoints.Name = "labelTotalPoints";
+            this.labelTotalPoints.Size = new System.Drawing.Size(98, 37);
+            this.labelTotalPoints.TabIndex = 11;
+            this.labelTotalPoints.Text = "00.00";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1049, 1487);
-            this.Controls.Add(this.infoButton);
+            this.Controls.Add(this.labelTotalPoints);
+            this.Controls.Add(this.labelPoints);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.statisticsButton);
             this.Controls.Add(this.markLabel);
             this.Controls.Add(this.avrgMarkLabel);
@@ -192,7 +217,7 @@
             this.MinimumSize = new System.Drawing.Size(1075, 1550);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
+            this.Text = "Source";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -215,7 +240,9 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem messageHiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeMarkToolStripMenuItem;
-        private System.Windows.Forms.Button infoButton;
         private System.Windows.Forms.ToolStripMenuItem showPotensialValueToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelPoints;
+        private System.Windows.Forms.Label labelTotalPoints;
     }
 }

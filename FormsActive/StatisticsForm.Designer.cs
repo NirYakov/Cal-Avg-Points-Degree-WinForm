@@ -205,7 +205,7 @@
             65536});
             this.numericUpDown2.Location = new System.Drawing.Point(432, 368);
             this.numericUpDown2.Maximum = new decimal(new int[] {
-            12,
+            120,
             0,
             0,
             0});
@@ -284,6 +284,7 @@
             // 
             // buttonMulitiCourse
             // 
+            this.buttonMulitiCourse.Enabled = false;
             this.buttonMulitiCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMulitiCourse.Location = new System.Drawing.Point(426, 442);
             this.buttonMulitiCourse.Name = "buttonMulitiCourse";
@@ -291,6 +292,7 @@
             this.buttonMulitiCourse.TabIndex = 19;
             this.buttonMulitiCourse.Text = "Multi Courses";
             this.buttonMulitiCourse.UseVisualStyleBackColor = true;
+            this.buttonMulitiCourse.Visible = false;
             // 
             // StatisticsForm
             // 
@@ -320,7 +322,7 @@
             this.MinimumSize = new System.Drawing.Size(590, 490);
             this.Name = "StatisticsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "StatisticsForm";
+            this.Text = "Statistics";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);

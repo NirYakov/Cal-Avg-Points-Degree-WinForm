@@ -56,12 +56,13 @@ namespace FormsActive
 
                 m_CalAvg.AddMarkAndPoints(i_DataToList[(int)eSubItem.Mark], i_DataToList[(int)eSubItem.Points]);
                 updateMarkAverageLabel();
+                updateTotalPoints();
 
                 dataListView.Items.Add(lvi);
             }
             catch (Exception)
             {
-                MessageBox.Show(string.Format("Error in type please try{0}again after check the '?'",Environment.NewLine));
+                MessageBox.Show(string.Format("Error in type please try{0}again after check the '?'", Environment.NewLine));
             }
         }
 
@@ -134,10 +135,10 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
             foreach (ListViewItem item in dataListView.Items)
             {
                 float diffrenceValue = CalculateAvg.DifferenceValueTo100(
-                    item.SubItems[(int)eSubItem.Mark].Text , item.SubItems[(int)eSubItem.Points].Text);
+                    item.SubItems[(int)eSubItem.Mark].Text, item.SubItems[(int)eSubItem.Points].Text);
 
                 allCourseDiffrences.Add(new CourseDiffrence(
-                        item.SubItems[(int)eSubItem.CourseName].Text, diffrenceValue));                    
+                        item.SubItems[(int)eSubItem.CourseName].Text, diffrenceValue));
             }
 
             return allCourseDiffrences;
@@ -156,68 +157,78 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
 
         private void removeCourseToolStripMenuItem_Click(object sender, EventArgs e) // ask guy ronen maybe . !!
         {
-            if (dataListView.Items.Count > 0)
+            try
             {
-                string removedItemName = dataListView.SelectedItems[0].SubItems[(int)eSubItem.CourseName].Text;
-                string removeItemMark = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Mark].Text;
-                string removeItemPoints = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Points].Text;
-
-                int currentRowThatRemove = dataListView.SelectedItems.IndexOf(dataListView.SelectedItems[0]);
-
-                m_CalAvg.SubstractMarkAndPoints(removeItemMark, removeItemPoints);
-
-                dataListView.Items.Remove(dataListView.SelectedItems[0]);
-
-                int indexRowToColor = 0;
-                foreach (ListViewItem item in dataListView.Items)
+                if (dataListView.Items.Count > 0)
                 {
-                    UtillsColors.RowColor(item, indexRowToColor);
-                    indexRowToColor++;
+                    string removedItemName = dataListView.SelectedItems[0].SubItems[(int)eSubItem.CourseName].Text;
+                    string removeItemMark = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Mark].Text;
+                    string removeItemPoints = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Points].Text;
+
+                    int currentRowThatRemove = dataListView.SelectedItems.IndexOf(dataListView.SelectedItems[0]);
+                    m_CalAvg.SubstractMarkAndPoints(removeItemMark, removeItemPoints);
+                    dataListView.Items.Remove(dataListView.SelectedItems[0]);
+                    int indexRowToColor = 0;
+                    foreach (ListViewItem item in dataListView.Items)
+                    {
+                        UtillsColors.RowColor(item, indexRowToColor);
+                        indexRowToColor++;
+                    }
+
+                    int dataListViewLength = dataListView.Items.Count;
+                    updateMarkAverageLabel();
+                    updateTotalPoints();
+                    m_ChangedListView = true;
+                    MessageBox.Show("Remove " + removedItemName);
                 }
-
-                int dataListViewLength = dataListView.Items.Count;
-
-                //for (int i = currentRowThatRemove; i < dataListViewLength; i++)
-                //{
-                //    rowColor(dataListView.Items[i], i);
-                //}                
-
-                updateMarkAverageLabel();
-
-                m_ChangedListView = true;
-
-                MessageBox.Show("Remove " + removedItemName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error , try to pick a row .(Row will be in blue.)");
             }
         }
 
         private void changeMarkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dataListView.Items.Count > 0)
+            try
             {
-                if (m_FormToChangeTheMark == null)
+                if (dataListView.Items.Count > 0)
                 {
-                    m_FormToChangeTheMark = FormChangeMark.GetInstanceOfFormChangeMark();
-                }
+                    if (m_FormToChangeTheMark == null)
+                    {
+                        m_FormToChangeTheMark = FormChangeMark.GetInstanceOfFormChangeMark();
+                    }
 
-                ListViewItem itemToChange = dataListView.SelectedItems[0];
-                string chosenCourseName = itemToChange.SubItems[(int)eSubItem.CourseName].Text;
-                string chosenCourePoints = itemToChange.SubItems[(int)eSubItem.Points].Text;
-                byte markToChange = byte.Parse(itemToChange.SubItems[(int)eSubItem.Mark].Text);
+                    ListViewItem itemToChange = dataListView.SelectedItems[0];
+                    string chosenCourseName = itemToChange.SubItems[(int)eSubItem.CourseName].Text;
+                    string chosenCourePoints = itemToChange.SubItems[(int)eSubItem.Points].Text;
+                    byte markToChange = byte.Parse(itemToChange.SubItems[(int)eSubItem.Mark].Text);
 
-                if (m_FormToChangeTheMark.ShowDialog(chosenCourseName, markToChange, m_CalAvg, chosenCourePoints) == DialogResult.OK)
-                {
-                    short totalOffset = (short)(m_FormToChangeTheMark.LastValue - markToChange);
-                    itemToChange.SubItems[(int)eSubItem.Mark].Text = m_FormToChangeTheMark.LastValue.ToString();
-                    m_CalAvg.ChangeMarkAndTotal(totalOffset.ToString(), itemToChange.SubItems[(int)eSubItem.Points].Text);
-                    updateMarkAverageLabel();
-                    m_ChangedListView = true;
+                    if (m_FormToChangeTheMark.ShowDialog(chosenCourseName, markToChange, m_CalAvg, chosenCourePoints) == DialogResult.OK)
+                    {
+                        short totalOffset = (short)(m_FormToChangeTheMark.LastValue - markToChange);
+                        itemToChange.SubItems[(int)eSubItem.Mark].Text = m_FormToChangeTheMark.LastValue.ToString();
+                        m_CalAvg.ChangeMarkAndTotal(totalOffset.ToString(), itemToChange.SubItems[(int)eSubItem.Points].Text);
+                        updateMarkAverageLabel();
+                        updateTotalPoints();
+                        m_ChangedListView = true;
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error , try to pick a row .(Row will be in blue.)");
             }
         }
 
         private void updateMarkAverageLabel()
         {
             markLabel.Text = m_CalAvg.ToString();
+        }
+
+        private void updateTotalPoints()
+        {
+            labelTotalPoints.Text = string.Format("{0:00.00}",m_CalAvg.PointsTotal);
         }
 
         #region this is something that i cant know or explaine how to use and how to modifi to my personal use.
@@ -238,36 +249,49 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
         //}
 
         #endregion
-
-        private void infoButton_Click(object sender, EventArgs e)
-        {
-            float currentAvg = m_CalAvg.AverageTotal;
-            MessageBox.Show(string.Format("Marks total ->> {0}{2}Points total ->>{1}{2}"
-                , m_CalAvg.MarkTotal, m_CalAvg.PointsTotal, Environment.NewLine));
-        }
         
         private void showPotensialValueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dataListView.Items.Count > 0)
+            try
             {
-                string markString = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Mark].Text;
-                string pointsString = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Points].Text;
+                if (dataListView.Items.Count > 0)
+                {
+                    string markString = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Mark].Text;
+                    string pointsString = dataListView.SelectedItems[0].SubItems[(int)eSubItem.Points].Text;
 
-                float differenceValue = CalculateAvg.DifferenceValueTo100(markString, pointsString);
+                    float differenceValue = CalculateAvg.DifferenceValueTo100(markString, pointsString);
 
-                MessageBox.Show(string.Format(
-                        "Potensian more mark (untill up to 100) {0} the potensian is {1}", Environment.NewLine, differenceValue)
-                        , "Mark Potenseal");
+                    MessageBox.Show(string.Format(
+                            "Potensian more mark (untill up to 100) {0} the potensian is {1}", Environment.NewLine, differenceValue)
+                            , "Mark Potenseal");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error , try to pick a row .(Row will be in blue.)");
             }
         }
+
+        #region Add that to progress bar ro something that all , when i can add the Goal .! serlasetion.!
+        // private float m_PointsGoal = 120;
+        //        private void InfoPointsProgress()
+        //        {
+        //            float pointsTotal = m_CalAvg.PointsTotal, percentPoints = pointsTotal / m_PointsGoal;
+        //            string bodyMessage = string.Format(
+        //@"Points collected : {0}
+        //Points Percent from gaol {1}", pointsTotal, percentPoints);
+        //            MessageBox.Show(bodyMessage, "Info progress");
+        //        }
+        #endregion
+
     }
 }
 
-    public enum eSubItem : byte
-    {
-        CourseName,
-        Mark,
-        Points,
-        Year,
-        Semseter
-    }
+public enum eSubItem : byte
+{
+    CourseName,
+    Mark,
+    Points,
+    Year,
+    Semseter
+}

@@ -70,6 +70,7 @@
     <Compile Include="StatisticsForm.Designer.cs">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UtillsColors.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddItemsForm.resx">
@@ -90,14 +91,16 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cal And Utills To Degree Points\Cal And Utills To Degree Points.csproj">
+    <ProjectReference Include="..\Utills Average Degree\Utills Average Degree.csproj">
       <Project>{76712c41-920c-42a6-b1a6-fd02a75b0f21}</Project>
-      <Name>Cal And Utills To Degree Points</Name>
+      <Name>Utills Average Degree</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
