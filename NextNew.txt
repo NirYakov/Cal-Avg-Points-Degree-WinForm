@@ -1,0 +1,11 @@
+Here its what i will do next.
+
+muti course simolat (simolator) that you can add courses in short (like only point and mark) +
++ to see how it will effect you . +
++ like to see how the futrue marks and points will can help you to .
+
+settings window , for color and for set challenge.
+
+challenge that by the points and will be with percent in the side +
++ user will enter points goal and progress bar say when user hit the goal +
+and maybe little percent in the side to show how far in numbers and % .

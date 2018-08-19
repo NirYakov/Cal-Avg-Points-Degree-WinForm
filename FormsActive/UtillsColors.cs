@@ -8,6 +8,8 @@ namespace Logic_And_Settings
     {
         public static void RowColor(ListViewItem i_ListViewRowItem, int i_RowNumber)
         {
+
+
             if (i_RowNumber % 2 != 0)
             {
                 i_ListViewRowItem.BackColor = Color.Silver; // Color.LightBlue ; 
@@ -18,6 +20,9 @@ namespace Logic_And_Settings
                 i_ListViewRowItem.BackColor = Color.White;
                 i_ListViewRowItem.ForeColor = Color.Black;
             }
+
+            //i_ListViewRowItem.BackColor = Color.White;
+            //i_ListViewRowItem.ForeColor = Color.Black;
         }
     }
 }

@@ -46,6 +46,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.labelPoints = new System.Windows.Forms.Label();
             this.labelTotalPoints = new System.Windows.Forms.Label();
+            this.checkBoxSortCol = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +72,7 @@
             this.dataListView.TabIndex = 0;
             this.dataListView.UseCompatibleStateImageBehavior = false;
             this.dataListView.View = System.Windows.Forms.View.Details;
+            this.dataListView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.dataListView_ColumnClick);
             // 
             // columnHeader1
             // 
@@ -185,7 +187,7 @@
             // 
             this.labelPoints.AutoSize = true;
             this.labelPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPoints.Location = new System.Drawing.Point(455, 106);
+            this.labelPoints.Location = new System.Drawing.Point(469, 106);
             this.labelPoints.Name = "labelPoints";
             this.labelPoints.Size = new System.Drawing.Size(106, 37);
             this.labelPoints.TabIndex = 10;
@@ -201,11 +203,23 @@
             this.labelTotalPoints.TabIndex = 11;
             this.labelTotalPoints.Text = "00.00";
             // 
+            // checkBoxSortCol
+            // 
+            this.checkBoxSortCol.AutoSize = true;
+            this.checkBoxSortCol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSortCol.Location = new System.Drawing.Point(65, 111);
+            this.checkBoxSortCol.Name = "checkBoxSortCol";
+            this.checkBoxSortCol.Size = new System.Drawing.Size(165, 41);
+            this.checkBoxSortCol.TabIndex = 12;
+            this.checkBoxSortCol.Text = "Sort Col";
+            this.checkBoxSortCol.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1049, 1487);
+            this.Controls.Add(this.checkBoxSortCol);
             this.Controls.Add(this.labelTotalPoints);
             this.Controls.Add(this.labelPoints);
             this.Controls.Add(this.button1);
@@ -244,5 +258,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelPoints;
         private System.Windows.Forms.Label labelTotalPoints;
+        private System.Windows.Forms.CheckBox checkBoxSortCol;
     }
 }

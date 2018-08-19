@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utills Average Degree", "Ut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degree Average", "Degree Average\Degree Average.csproj", "{8F07F70F-7B5A-4E64-862C-9936FF7E2120}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{997282EA-4CA7-47B4-AA66-E090A0A1F5B6}"
+	ProjectSection(SolutionItems) = preProject
+		NextNew.txt = NextNew.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

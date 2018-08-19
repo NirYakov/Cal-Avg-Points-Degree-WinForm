@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,7 +24,6 @@ namespace FormsActive
             r_UserFileName = i_UserFileName;
 
             loadDataToListViewFromFile();
-
         }
 
         public void AddWithEvent(string[] i_ToAdd)
@@ -229,7 +229,7 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
 
         private void updateTotalPoints()
         {
-            labelTotalPoints.Text = string.Format("{0:00.00}",m_CalAvg.PointsTotal);
+            labelTotalPoints.Text = string.Format("{0:00.00}", m_CalAvg.PointsTotal);
         }
 
         #region this is something that i cant know or explaine how to use and how to modifi to my personal use.
@@ -250,7 +250,7 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
         //}
 
         #endregion
-        
+
         private void showPotensialValueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -273,6 +273,8 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
             }
         }
 
+
+
         #region Add that to progress bar ro something that all , when i can add the Goal .! serlasetion.!
         // private float m_PointsGoal = 120;
         //        private void InfoPointsProgress()
@@ -284,6 +286,104 @@ all the changes then click 'Yes'", "Save Data", MessageBoxButtons.YesNo) == Dial
         //            MessageBox.Show(bodyMessage, "Info progress");
         //        }
         #endregion
+
+        int m_SortCol = 0;
+
+        private void dataListView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (checkBoxSortCol.Checked)
+            {
+
+                if (e.Column != m_SortCol)
+                {
+                    m_SortCol = e.Column;
+                    dataListView.Sorting = SortOrder.Ascending;
+                }
+                else
+                {
+                    if (dataListView.Sorting == SortOrder.Ascending)
+                    {
+                        dataListView.Sorting = SortOrder.Descending;
+                    }
+                    else
+                    {
+                        dataListView.Sorting = SortOrder.Ascending;
+                    }
+
+                    ListViewItemComparer lvic = ListViewItemComparer.GetInstance();
+
+                    dataListView.ListViewItemSorter = lvic.SortingClass(e.Column, dataListView.Sorting);
+
+                    m_ChangedListView = true;
+
+                    int indexToColor = 0;
+                    foreach (ListViewItem item in dataListView.Items)
+                    {
+                        UtillsColors.RowColor(item,indexToColor);
+                        indexToColor++;
+                    }
+                }
+            }
+
+        }
+    }
+
+    public class ListViewItemComparer : IComparer
+    {
+        private static ListViewItemComparer m_Instance = null;
+        private int m_ColNumber = 0;
+        private SortOrder m_SortOrder = SortOrder.Ascending;
+
+
+        private ListViewItemComparer()
+        {
+
+        }
+
+        public static ListViewItemComparer GetInstance()
+        {
+            if (m_Instance == null)
+            {
+                m_Instance = new ListViewItemComparer();
+            }
+
+            return m_Instance;
+        }
+
+        public ListViewItemComparer SortingClass(int i_Col, SortOrder i_SortOrder)
+        {
+            m_ColNumber = i_Col;
+            m_SortOrder = i_SortOrder;
+
+            return this;
+        }
+
+        public int Compare(object x, object y)
+        {
+            int returnVal = 0;
+
+            ListViewItem lviLeft = x as ListViewItem, lviRight = y as ListViewItem;
+
+            if (m_ColNumber == (int)eSubItem.CourseName || m_ColNumber == (int)eSubItem.Semseter)
+            {
+                returnVal = string.Compare(lviLeft.SubItems[m_ColNumber].Text, lviRight.SubItems[m_ColNumber].Text);
+                
+            }
+            else
+            {
+                float numberLeft = float.Parse(lviLeft.SubItems[m_ColNumber].Text);
+                float numberRight = float.Parse(lviRight.SubItems[m_ColNumber].Text);
+
+                returnVal = (int)(numberLeft - numberRight);                
+            }
+
+            if (m_SortOrder == SortOrder.Descending)
+            {
+                returnVal *= -1;
+            }
+
+            return returnVal;
+        }
 
     }
 }
